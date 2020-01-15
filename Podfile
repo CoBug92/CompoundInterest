@@ -9,5 +9,10 @@ target 'CIC' do
   pod 'Dip'
   # UI debug
   pod 'Reveal-SDK', :configurations => ['Debug']
+  # Rx
+  pod 'RxCocoa'
+  pod 'RxSwift'
+  # Graphics
+  pod 'Charts'
 
 end
