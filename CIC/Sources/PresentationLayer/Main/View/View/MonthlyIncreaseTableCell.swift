@@ -22,7 +22,6 @@ class MonthlyIncreaseTableCell: UITableViewCell {
         $0.backgroundColor = UIColor.grey.withAlphaComponent(0.3)
     }
     private lazy var monthlyIncreaseTextField = CalculatorTextField(padding: UIEdgeInsets(equal: Margin.x(4))).with {
-        $0.delegate = self
         $0.clearButtonMode = .whileEditing
         $0.autocorrectionType = .no
         $0.textColor = .main
@@ -35,11 +34,10 @@ class MonthlyIncreaseTableCell: UITableViewCell {
 
     // MARK: - Properties
     var reuseBag = DisposeBag()
-    private let didChangeMonthlyIncreaseSubject = PublishSubject<String>()
 
     // MARK: - Computed properties
     var didChangeMonthlyIncrease: Observable<String> {
-        return didChangeMonthlyIncreaseSubject.asObservable()
+        return monthlyIncreaseTextField.rx.value.map { $0 ?? "0" }.asObservable()
     }
 
     // MARK: - Init
@@ -104,20 +102,6 @@ class MonthlyIncreaseTableCell: UITableViewCell {
             monthlyIncreaseTextField,
             bottomSeparatorView,
         ])
-    }
-
-}
-
-extension MonthlyIncreaseTableCell: UITextFieldDelegate {
-
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
-        didChangeMonthlyIncreaseSubject.onNext(text + string)
-        return true
     }
 
 }

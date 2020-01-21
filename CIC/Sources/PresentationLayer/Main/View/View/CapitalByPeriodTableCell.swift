@@ -52,7 +52,7 @@ class CapitalByPeriodTableCell: UITableViewCell {
     // MARK: - Public methods
     func setup(with model: CapitalByPeriod) {
         periodLabel.text = "\(model.period)"
-        totalLabel.text = "\(model.result)"
+        totalLabel.text = String(format: "%.1f %", model.result)
     }
 
     // MARK: - Private methods

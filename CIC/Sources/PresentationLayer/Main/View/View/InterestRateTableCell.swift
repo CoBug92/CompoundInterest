@@ -22,7 +22,6 @@ class InterestRateTableCell: UITableViewCell {
         $0.backgroundColor = UIColor.grey.withAlphaComponent(0.3)
     }
     private lazy var interestRateTextField = CalculatorTextField(padding: UIEdgeInsets(equal: Margin.x(4))).with {
-        $0.delegate = self
         $0.clearButtonMode = .whileEditing
         $0.autocorrectionType = .no
         $0.textColor = .main
@@ -35,11 +34,10 @@ class InterestRateTableCell: UITableViewCell {
 
     // MARK: - Properties
     var reuseBag = DisposeBag()
-    private let didChangeInterestRateSubject = PublishSubject<String>()
 
     // MARK: - Computed properties
     var didChangeInterestRate: Observable<String> {
-        return didChangeInterestRateSubject.asObservable()
+        return interestRateTextField.rx.value.map { $0 ?? "0" }.asObservable()
     }
 
     // MARK: - Init
@@ -104,20 +102,6 @@ class InterestRateTableCell: UITableViewCell {
             interestRateTextField,
             bottomSeparatorView,
         ])
-    }
-
-}
-
-extension InterestRateTableCell: UITextFieldDelegate {
-
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
-        didChangeInterestRateSubject.onNext(text + string)
-        return true
     }
 
 }

@@ -124,10 +124,10 @@ class ResultTableCell: UITableViewCell {
 
     // MARK: - Public methods
     func setup(with model: Result) {
-        capLabel.text = "\(model.totalCap)"
-        interestLabel.text = "\(model.totalInterest)"
-        depositsLabel.text = "\(model.totalDeposits)"
-        growthLabel.text = "\(model.totalGrowth)"
+        capLabel.text = String(format: "%.1f", model.totalCap)
+        interestLabel.text = String(format: "%.1f", model.totalInterest)
+        depositsLabel.text = String(format: "%.1f", model.totalDeposits)
+        growthLabel.text = String(format: "%.1f", model.totalGrowth)
     }
 
     // MARK: - Private methods

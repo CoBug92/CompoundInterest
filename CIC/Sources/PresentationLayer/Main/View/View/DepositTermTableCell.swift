@@ -22,7 +22,6 @@ class DepositTermTableCell: UITableViewCell {
         $0.backgroundColor = UIColor.grey.withAlphaComponent(0.3)
     }
     private lazy var depositTermTextField = CalculatorTextField(padding: UIEdgeInsets(equal: Margin.x(4))).with {
-        $0.delegate = self
         $0.clearButtonMode = .whileEditing
         $0.autocorrectionType = .no
         $0.textColor = .main
@@ -35,11 +34,10 @@ class DepositTermTableCell: UITableViewCell {
 
     // MARK: - Properties
     var reuseBag = DisposeBag()
-    private let didChangeDepositTermSubject = PublishSubject<String>()
 
     // MARK: - Computed properties
     var didChangeDepositTerm: Observable<String> {
-        return didChangeDepositTermSubject.asObservable()
+        return depositTermTextField.rx.value.map { $0 ?? "0" }.asObservable()
     }
 
     // MARK: - Init
@@ -101,20 +99,6 @@ class DepositTermTableCell: UITableViewCell {
             depositTermTextField,
             bottomSeparatorView,
         ])
-    }
-
-}
-
-extension DepositTermTableCell: UITextFieldDelegate {
-
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
-        guard let text = textField.text else {
-            return true
-        }
-        didChangeDepositTermSubject.onNext(text + string)
-        return true
     }
 
 }
