@@ -23,12 +23,16 @@ final class MainViewController: UIViewController {
     private let output: MainViewOutput
 
     // MARK: - Properties
+    private let disposeBag = DisposeBag()
+
+    // MARK: - Observable properties
     private var viewModels = [MainCellType]() {
         didSet {
             tableView.reloadData()
-
-            if let index = viewModels.firstIndex(where: { $0 == .calculateButton }) {
-                tableView.scrollToRow(at: IndexPath(row: index, section: 0), at: .top, animated: true)
+            if case .result = viewModels.last {
+                tableView.scrollToRow(at: IndexPath(row: viewModels.count - 1, section: 0),
+                                      at: .top,
+                                      animated: true)
             }
         }
     }
@@ -136,16 +140,9 @@ extension MainViewController: UITableViewDataSource {
         case .result(let model):
             let cell = tableView.cell(at: indexPath, for: ResultTableCell.self)
             cell.setup(with: model)
-            return cell
-
-        case .graphic(let models):
-            let cell = tableView.cell(at: indexPath, for: GraphicTableCell.self)
-            cell.setup(with: models)
-            return cell
-
-        case .capitalByPeriod(let model):
-            let cell = tableView.cell(at: indexPath, for: CapitalByPeriodTableCell.self)
-            cell.setup(with: model)
+            cell.didPressGraphicButton
+                .subscribe(onNext: { [unowned self] in self.output.didPressGraphicButton() })
+                .disposed(by: disposeBag)
             return cell
         }
     }

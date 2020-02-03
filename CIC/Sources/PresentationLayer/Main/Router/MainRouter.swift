@@ -15,4 +15,11 @@ final class MainRouter {
 
 }
 
-extension MainRouter: MainRouterInput {}
+extension MainRouter: MainRouterInput {
+
+    func showResult(_ result: Result) {
+        let viewController = ResultBuilder.build(with: result)
+        self.viewController?.present(viewController, animated: true)
+    }
+
+}

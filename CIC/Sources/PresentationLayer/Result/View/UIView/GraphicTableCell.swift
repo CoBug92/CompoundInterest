@@ -12,6 +12,11 @@ import PinLayout
 class GraphicTableCell: UITableViewCell {
 
     // MARK: - Subviews
+    private let titleLabel = UILabel().with {
+        $0.text = "График доходности"
+        $0.font = .boldSystemFont(ofSize: 20)
+        $0.textColor = .main
+    }
     private lazy var chartView = BarChartView().with {
         $0.drawValueAboveBarEnabled = false
         $0.chartDescription?.enabled = false
@@ -61,11 +66,24 @@ class GraphicTableCell: UITableViewCell {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         pin.width(size.width)
         layout()
-        return CGSize(width: frame.width, height: 300)
+        return contentView.frame.size
     }
 
     private func layout() {
-        chartView.pin.all()
+        let graphicHeight: CGFloat = 300
+
+        titleLabel.pin
+            .horizontally(Margin.x(4))
+            .sizeToFit(.width)
+            .top(Margin.x(5))
+
+        chartView.pin
+            .horizontally()
+            .height(graphicHeight)
+            .below(of: titleLabel)
+            .marginTop(Margin.x(4))
+
+        contentView.pin.height(chartView.frame.maxY)
     }
 
     // MARK: - Public methods
@@ -85,7 +103,10 @@ class GraphicTableCell: UITableViewCell {
 
     // MARK: - Private methods
     private func addSubviews() {
-        contentView.addSubview(chartView)
+        contentView.addSubviews([
+            chartView,
+            titleLabel,
+        ])
     }
 
 }

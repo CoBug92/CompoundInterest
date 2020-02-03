@@ -17,10 +17,10 @@ final class GradientView: UIView {
 
     // MARK: - Public methods
     func configureGradientLayer(
-        withColors colors: [CGColor] = [UIColor.gradient2.cgColor, UIColor.gradient1.cgColor],
-        startPoint: CGPoint = CGPoint(x: 1, y: 0.3),
-        endPoint: CGPoint = CGPoint(x: 0, y: 0.7),
-        locations: [NSNumber] = [0.1, 1]) {
+        withColors colors: [CGColor] = [UIColor.gradient1.cgColor, UIColor.gradient2.cgColor],
+        startPoint: CGPoint = CGPoint(x: 0, y: 0.5),
+        endPoint: CGPoint = CGPoint(x: 1, y: 0.5),
+        locations: [NSNumber] = [0, 1]) {
 
         guard let gradientLayer = layer as? CAGradientLayer else {
             return

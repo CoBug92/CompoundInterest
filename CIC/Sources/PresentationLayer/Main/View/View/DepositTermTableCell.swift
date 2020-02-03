@@ -15,21 +15,22 @@ class DepositTermTableCell: UITableViewCell {
     // MARK: - Subviews
     private let depositTermLabel = UILabel().with {
         $0.textColor = .grey
-        $0.font = .systemFont(ofSize: 14)
+        $0.font = .systemFont(ofSize: 15)
         $0.text = "Кол-во периодов"
     }
     private let topSeparatorView = UIView().with {
-        $0.backgroundColor = UIColor.grey.withAlphaComponent(0.3)
+        $0.backgroundColor = UIColor.main.withAlphaComponent(0.1)
     }
     private lazy var depositTermTextField = CalculatorTextField(padding: UIEdgeInsets(equal: Margin.x(4))).with {
         $0.clearButtonMode = .whileEditing
         $0.autocorrectionType = .no
         $0.textColor = .main
-        $0.font = .boldSystemFont(ofSize: 24)
+        $0.font = .boldSystemFont(ofSize: 34)
         $0.keyboardType = .numberPad
+        $0.text = "12"
     }
     private let bottomSeparatorView = UIView().with {
-        $0.backgroundColor = UIColor.grey.withAlphaComponent(0.3)
+        $0.backgroundColor = UIColor.main.withAlphaComponent(0.1)
     }
 
     // MARK: - Properties
@@ -67,7 +68,7 @@ class DepositTermTableCell: UITableViewCell {
         let separatorHeight: CGFloat = 0.5
 
         depositTermLabel.pin
-            .horizontally(Margin.x(3))
+            .horizontally(Margin.x(4))
             .sizeToFit(.width)
             .top(Margin.x(2))
 

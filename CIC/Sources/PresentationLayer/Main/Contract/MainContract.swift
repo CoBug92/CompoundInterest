@@ -51,6 +51,7 @@ protocol MainViewOutput {
      - Authors: Bogdan Kostyuchenko
      */
     func didChangeMonthlyIncrease(_ monthlyIncrease: String)
+    func didPressGraphicButton()
 }
 
 // MARK: - Interactor
@@ -58,7 +59,9 @@ protocol MainInteractorInput {}
 protocol MainInteractorOutput: class {}
 
 // MARK: - Router
-protocol MainRouterInput: class {}
+protocol MainRouterInput: class {
+    func showResult(_ result: Result)
+}
 
 // MARK: - Service
 protocol MainServiceProtocol {}

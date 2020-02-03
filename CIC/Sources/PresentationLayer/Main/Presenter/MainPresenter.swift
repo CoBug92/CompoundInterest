@@ -15,7 +15,6 @@ final class MainPresenter {
 
     // MARK: - Properties
     private var result: Result?
-    private let monthsPerYear = 12
     private var depositSize: Double = 0
     private var depositTerm: Double = 0
     private var interestRate: Double = 0
@@ -36,16 +35,7 @@ final class MainPresenter {
             .monthlyIncrease,
             .calculateButton,
             makeResultViewModel(),
-            makeGraphicViewModel(),
-            ].compactMap { $0 } + (result?.capitalByPeriod.map { MainCellType.capitalByPeriod(model: $0) } ?? []
-)
-    }
-
-    private func makeGraphicViewModel() -> MainCellType? {
-        guard let result = result else {
-            return nil
-        }
-        return .graphic(models: result.capitalByPeriod)
+            ].compactMap { $0 }
     }
 
     private func makeResultViewModel() -> MainCellType? {
@@ -56,17 +46,17 @@ final class MainPresenter {
     }
 
     private func calculate() {
+        guard depositTerm > 0 else {
+            return
+        }
         var capitalByPeriod = [CapitalByPeriod]()
         var total = Double(depositSize)
 
-        for period in 0 ... Int(depositTerm) {
-            let monthRate = interestRate / Double(monthsPerYear)
-            total *= 1 + monthRate / 100
-            // В первом месяце мы заносим только начальный депозит
-            if period != 0 {
-                total += monthlyIncrease
-            }
-            capitalByPeriod.append(CapitalByPeriod(period: period + 1, result: total))
+        for period in 1 ... Int(depositTerm) {
+            let rate = interestRate / depositTerm
+            total *= 1 + rate / 100
+            total += monthlyIncrease
+            capitalByPeriod.append(CapitalByPeriod(period: period, result: total))
         }
 
         let totalDeposits = depositTerm * monthlyIncrease + depositSize
@@ -120,6 +110,13 @@ extension MainPresenter: MainViewOutput {
             return
         }
         self.monthlyIncrease = monthlyIncrease
+    }
+
+    func didPressGraphicButton() {
+        guard let result = result else {
+            return
+        }
+        router.showResult(result)
     }
 
 }

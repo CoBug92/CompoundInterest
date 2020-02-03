@@ -15,8 +15,9 @@ class CalculateTableCell: UITableViewCell {
     // MARK: - Subviews
     private let calculateButton = GradientButton().with {
         $0.setTitle("Рассчитать", for: .normal)
+        $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         $0.contentEdgeInsets = UIEdgeInsets(verticalInset: Margin.x(4))
-        $0.setCorner(radius: 10)
+        $0.setCorner(radius: 12)
     }
 
     // MARK: - Properties
@@ -52,11 +53,11 @@ class CalculateTableCell: UITableViewCell {
 
     private func layout() {
         calculateButton.pin
-            .horizontally(Margin.x(5))
+            .horizontally(Margin.x(4))
             .sizeToFit(.width)
-            .top(Margin.x(3))
+            .top(Margin.x(6))
 
-        contentView.pin.height(calculateButton.frame.maxY + Margin.x(3))
+        contentView.pin.height(calculateButton.frame.maxY + Margin.x(6))
     }
 
     // MARK: - Private methods
