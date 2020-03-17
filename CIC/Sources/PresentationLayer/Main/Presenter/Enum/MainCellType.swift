@@ -8,10 +8,7 @@
 
 enum MainCellType {
 
-    case depositTerm
-    case depositSize
-    case interestRate
-    case monthlyIncrease
+    case initialСonditions
     case calculateButton
     case result(model: Result)
 

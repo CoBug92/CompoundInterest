@@ -6,6 +6,9 @@
 //  Copyright © 2020 Bogdan Kostyuchenko. All rights reserved.
 //
 
+// MARK: - Typealiase
+typealias ResultDataSet = (section: ResultSectionType, cells: [ResulCellType])
+
 // MARK: - Builder
 protocol ResultBuilderProtocol: class {
 	static func build(with result: Result) -> ResultViewController
@@ -18,7 +21,7 @@ protocol ResultViewInput: class {
      - Parameter viewModel: Подготовленные вью модели
      - Authors: Bogdan Kostyuchenko
      */
-    func setup(_ viewModels: [ResulCellType])
+    func setup(_ viewModels: [ResultDataSet])
 }
 protocol ResultViewOutput {
     /**
@@ -26,6 +29,7 @@ protocol ResultViewOutput {
      - Authors: Bogdan Kostyuchenko
      */
     func viewDidLoad()
+    func didPressCloseButton()
 }
 
 // MARK: - Interactor
@@ -33,7 +37,9 @@ protocol ResultInteractorInput {}
 protocol ResultInteractorOutput: class {}
 
 // MARK: - Router
-protocol ResultRouterInput: class {}
+protocol ResultRouterInput: class {
+    func dismiss()
+}
 
 // MARK: - Service
 protocol ResultServiceProtocol {}

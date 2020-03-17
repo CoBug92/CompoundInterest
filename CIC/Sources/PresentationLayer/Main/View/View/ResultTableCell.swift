@@ -18,7 +18,7 @@ class ResultTableCell: UITableViewCell {
         $0.text = "Ключевые показатели"
     }
     private let containerView = UIView().with {
-        $0.backgroundColor = UIColor.grey.withAlphaComponent(0.2)
+        $0.backgroundColor = .darkGrey
         $0.layer.cornerRadius = 12
         $0.clipsToBounds = true
     }
@@ -26,41 +26,41 @@ class ResultTableCell: UITableViewCell {
         $0.setTitle("Смотреть график доходности", for: .normal)
         $0.setImage(UIImage(named: "Graphic"), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 17)
-        $0.tintColor = .gradient1
+        $0.tintColor = .gradient2
     }
     private let graphicSeparator = UIView().with {
-        $0.backgroundColor = UIColor.main.withAlphaComponent(0.1)
+        $0.backgroundColor = UIColor.white.withAlphaComponent(0.1)
     }
     private let depositsLabel = UILabel().with {
-        $0.textColor = .main
+        $0.textColor = .white
         $0.font = .boldSystemFont(ofSize: 24)
     }
     private let totalDepositsLabel = UILabel().with {
-        $0.textColor = .grey
+        $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
         $0.text = "Внесенная сумма"
     }
     private let totalDepositsSeparator = UIView().with {
-        $0.backgroundColor = UIColor.main.withAlphaComponent(0.1)
+        $0.backgroundColor = UIColor.white.withAlphaComponent(0.1)
     }
     private let capLabel = UILabel().with {
         $0.textColor = .green
         $0.font = .boldSystemFont(ofSize: 24)
     }
     private let totalCapLabel = UILabel().with {
-        $0.textColor = .grey
+        $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
         $0.text = "Итоговая сумма за все периоды"
     }
     private let totalCapSeparator = UIView().with {
-        $0.backgroundColor = UIColor.main.withAlphaComponent(0.1)
+        $0.backgroundColor = UIColor.white.withAlphaComponent(0.1)
     }
     private let interestLabel = UILabel().with {
-        $0.textColor = .main
+        $0.textColor = .white
         $0.font = .boldSystemFont(ofSize: 24)
     }
     private let totalInterestLabel = UILabel().with {
-        $0.textColor = .grey
+        $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
         $0.text = "Заработано на процентах"
     }
@@ -68,11 +68,11 @@ class ResultTableCell: UITableViewCell {
         $0.backgroundColor = UIColor.main.withAlphaComponent(0.1)
     }
     private let growthLabel = UILabel().with {
-        $0.textColor = .main
+        $0.textColor = .white
         $0.font = .boldSystemFont(ofSize: 24)
     }
     private let totalGrowthLabel = UILabel().with {
-        $0.textColor = .grey
+        $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
         $0.text = "Заработано процентов"
     }
@@ -202,7 +202,7 @@ class ResultTableCell: UITableViewCell {
 
     // MARK: - Public methods
     func setup(with model: Result) {
-        capLabel.text = String(format: "%.1f", model.totalCap)
+        capLabel.text = String(format: "+ %.1f", model.totalCap)
         interestLabel.text = String(format: "%.1f", model.totalInterest)
         depositsLabel.text = String(format: "%.1f", model.totalDeposits)
         growthLabel.text = String(format: "%.1f", model.totalGrowth)

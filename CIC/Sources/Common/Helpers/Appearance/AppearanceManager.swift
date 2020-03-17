@@ -13,6 +13,8 @@ final class AppearanceManager: NSObject {
     private func configure() {
         TableViewAppearance.configure()
         TableViewCellAppearance.configure()
+        UINavigationBarAppearance.configure()
+        TipsAppearance.configure()
     }
 
 }

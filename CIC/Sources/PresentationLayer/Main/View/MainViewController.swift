@@ -80,7 +80,7 @@ final class MainViewController: UIViewController {
     private func configure() {
         title = "Сложный процент"
         view.backgroundColor = .background
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
     }
 
 }
@@ -102,38 +102,35 @@ extension MainViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch viewModels[indexPath.row] {
-        case .depositTerm:
-            let cell = tableView.cell(at: indexPath, for: DepositTermTableCell.self)
-            cell.didChangeDepositTerm
-                .bind(onNext: { [unowned self] in self.output.didChangeDepositTerm($0) })
-                .disposed(by: cell.reuseBag)
-            return cell
-
-        case .depositSize:
-            let cell = tableView.cell(at: indexPath, for: DepositSizeTextField.self)
+        case .initialСonditions:
+            let cell = tableView.cell(at: indexPath, for: CalculatorTableCell.self)
             cell.didChangeDepositSize
                 .bind(onNext: { [unowned self] in self.output.didChangeDepositSize($0) })
                 .disposed(by: cell.reuseBag)
-            return cell
-
-        case .interestRate:
-            let cell = tableView.cell(at: indexPath, for: InterestRateTableCell.self)
+            cell.didChangeDepositTerm
+                .bind(onNext: { [unowned self] in self.output.didChangeDepositTerm($0) })
+                .disposed(by: cell.reuseBag)
             cell.didChangeInterestRate
                 .bind(onNext: { [unowned self] in self.output.didChangeInterestRate($0) })
                 .disposed(by: cell.reuseBag)
-            return cell
-
-        case .monthlyIncrease:
-            let cell = tableView.cell(at: indexPath, for: MonthlyIncreaseTableCell.self)
             cell.didChangeMonthlyIncrease
                 .bind(onNext: { [unowned self] in self.output.didChangeMonthlyIncrease($0) })
                 .disposed(by: cell.reuseBag)
+//            Observable.merge(cell.didChangeDepositSizeInfo,
+//                             cell.didChangeDepositTermInfo,
+//                             cell.didChangeInterestRateInfo,
+//                             cell.didChangeMonthlyIncreaseInfo)
+//                .bind(onNext: { self.output.didPressInfo($0) })
+//                .disposed(by: cell.reuseBag)
             return cell
 
         case .calculateButton:
             let cell = tableView.cell(at: indexPath, for: CalculateTableCell.self)
             cell.didPressCalculateButton
-                .bind(onNext: { [unowned self] in self.output.didPressCalculateButton() })
+                .bind(onNext: { [unowned self] in
+                    self.view.makeVibration(withStyle: .light)
+                    self.output.didPressCalculateButton()
+                })
                 .disposed(by: cell.reuseBag)
             return cell
 
@@ -141,7 +138,10 @@ extension MainViewController: UITableViewDataSource {
             let cell = tableView.cell(at: indexPath, for: ResultTableCell.self)
             cell.setup(with: model)
             cell.didPressGraphicButton
-                .subscribe(onNext: { [unowned self] in self.output.didPressGraphicButton() })
+                .subscribe(onNext: { [unowned self] in
+                    self.view.makeVibration(withStyle: .medium)
+                    self.output.didPressGraphicButton()
+                })
                 .disposed(by: disposeBag)
             return cell
         }

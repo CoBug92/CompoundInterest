@@ -15,6 +15,7 @@ extension UIColor {
     static var background: UIColor { return UIColor(named: #function)! }
     static var main: UIColor { return UIColor(named: #function)! }
     static var grey: UIColor { return UIColor(named: #function)! }
+    static var darkGrey: UIColor { return UIColor(named: #function)! }
     static var green: UIColor { return UIColor(named: #function)! }
     static var gradient1: UIColor { return UIColor(named: #function)! }
     static var gradient2: UIColor { return UIColor(named: #function)! }

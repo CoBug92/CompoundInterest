@@ -16,5 +16,9 @@ final class ResultRouter {
 }
 
 extension ResultRouter: ResultRouterInput {
-    
+
+    func dismiss() {
+        viewController?.dismiss(animated: true)
+    }
+
 }

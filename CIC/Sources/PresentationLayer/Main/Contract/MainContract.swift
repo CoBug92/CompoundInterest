@@ -35,23 +35,24 @@ protocol MainViewOutput {
      Вызывается каждый раз, когда пользователь обновляет доходность 1 периода
      - Authors: Bogdan Kostyuchenko
      */
-    func didChangeDepositTerm(_ depositTerm: String)
+    func didChangeDepositTerm(_ depositTerm: Double)
     /**
      Вызывается каждый раз, когда пользователь обновляет срок вклада
      - Authors: Bogdan Kostyuchenko
      */
-    func didChangeDepositSize(_ depositSize: String)
+    func didChangeDepositSize(_ depositSize: Double)
     /**
      Вызывается каждый раз, когда пользователь обновляет процентную ставку
      - Authors: Bogdan Kostyuchenko
      */
-    func didChangeInterestRate(_ interestRate: String)
+    func didChangeInterestRate(_ interestRate: Double)
     /**
      Вызывается каждый раз, когда пользователь обновляет ежемесячную капитализацию
      - Authors: Bogdan Kostyuchenko
      */
-    func didChangeMonthlyIncrease(_ monthlyIncrease: String)
+    func didChangeMonthlyIncrease(_ monthlyIncrease: Double)
     func didPressGraphicButton()
+    func didPressInfo(_ infoType: InfoType)
 }
 
 // MARK: - Interactor
@@ -60,7 +61,7 @@ protocol MainInteractorOutput: class {}
 
 // MARK: - Router
 protocol MainRouterInput: class {
-    func showResult(_ result: Result)
+    func openResult(_ result: Result)
 }
 
 // MARK: - Service

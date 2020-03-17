@@ -6,6 +6,8 @@
 //  Copyright © 2020 Bogdan Kostyuchenko. All rights reserved.
 //
 
+import Foundation
+
 final class MainPresenter {
 
     // MARK: - Protocols properties
@@ -29,10 +31,7 @@ final class MainPresenter {
     // MARK: - Private methods
     private func makeViewModels() -> [MainCellType] {
         return [
-            .depositSize,
-            .depositTerm,
-            .interestRate,
-            .monthlyIncrease,
+            .initialСonditions,
             .calculateButton,
             makeResultViewModel(),
             ].compactMap { $0 }
@@ -45,30 +44,33 @@ final class MainPresenter {
         return .result(model: result)
     }
 
-    private func calculate() {
+    private func calculateResult() {
         guard depositTerm > 0 else {
             return
         }
-        var capitalByPeriod = [CapitalByPeriod]()
-        var total = Double(depositSize)
+        DispatchQueue.global(qos: .userInitiated).async { [unowned self] in
+            var capitalByPeriod = [CapitalByPeriod]()
+            var total = Double(self.depositSize)
 
-        for period in 1 ... Int(depositTerm) {
-            let rate = interestRate / depositTerm
-            total *= 1 + rate / 100
-            total += monthlyIncrease
-            capitalByPeriod.append(CapitalByPeriod(period: period, result: total))
+            for period in 1 ... Int(self.depositTerm) {
+                total *= 1 + self.interestRate / 100
+                total += self.monthlyIncrease
+                capitalByPeriod.append(CapitalByPeriod(period: period, result: total))
+            }
+
+            let totalDeposits = self.depositTerm * self.monthlyIncrease + self.depositSize
+            let totalInterest = total - self.depositSize - (self.monthlyIncrease * self.depositTerm)
+            let totalGrowth = (total - self.depositSize) / self.depositSize * 100
+
+            self.result = Result(totalCap: total,
+                                 totalInterest: totalInterest,
+                                 totalDeposits: totalDeposits,
+                                 totalGrowth: totalGrowth,
+                                 capitalByPeriod: capitalByPeriod)
+            DispatchQueue.main.async {
+                self.view?.showData(self.makeViewModels())
+            }
         }
-
-        let totalDeposits = depositTerm * monthlyIncrease + depositSize
-        let totalInterest = total - depositSize - (monthlyIncrease * depositTerm)
-        let totalGrowth = (total - depositSize) / depositSize * 100
-
-        result = Result(totalCap: total,
-                        totalInterest: totalInterest,
-                        totalDeposits: totalDeposits,
-                        totalGrowth: totalGrowth,
-                        capitalByPeriod: capitalByPeriod)
-        view?.showData(makeViewModels())
     }
 
 }
@@ -81,34 +83,22 @@ extension MainPresenter: MainViewOutput {
     }
 
     func didPressCalculateButton() {
-        calculate()
+        calculateResult()
     }
 
-    func didChangeDepositSize(_ depositSize: String) {
-        guard let depositSize = Double(depositSize) else {
-            return
-        }
+    func didChangeDepositSize(_ depositSize: Double) {
         self.depositSize = depositSize
     }
 
-    func didChangeDepositTerm(_ depositTerm: String) {
-        guard let depositTerm = Double(depositTerm) else {
-            return
-        }
+    func didChangeDepositTerm(_ depositTerm: Double) {
         self.depositTerm = depositTerm
     }
 
-    func didChangeInterestRate(_ interestRate: String) {
-        guard let interestRate = Double(interestRate) else {
-            return
-        }
+    func didChangeInterestRate(_ interestRate: Double) {
         self.interestRate = interestRate
     }
 
-    func didChangeMonthlyIncrease(_ monthlyIncrease: String) {
-        guard let monthlyIncrease = Double(monthlyIncrease) else {
-            return
-        }
+    func didChangeMonthlyIncrease(_ monthlyIncrease: Double) {
         self.monthlyIncrease = monthlyIncrease
     }
 
@@ -116,7 +106,10 @@ extension MainPresenter: MainViewOutput {
         guard let result = result else {
             return
         }
-        router.showResult(result)
+        router.openResult(result)
+    }
+
+    func didPressInfo(_ infoType: InfoType) {
     }
 
 }

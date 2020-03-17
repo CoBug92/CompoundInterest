@@ -17,9 +17,9 @@ final class MainRouter {
 
 extension MainRouter: MainRouterInput {
 
-    func showResult(_ result: Result) {
+    func openResult(_ result: Result) {
         let viewController = ResultBuilder.build(with: result)
-        self.viewController?.present(viewController, animated: true)
+        self.viewController?.navigationController?.present(viewController, animated: true)
     }
 
 }

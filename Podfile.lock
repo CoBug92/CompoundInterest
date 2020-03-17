@@ -3,27 +3,30 @@ PODS:
     - Charts/Core (= 3.4.0)
   - Charts/Core (3.4.0)
   - Dip (7.0.1)
+  - EasyTipView (2.0.4)
   - PinLayout (1.8.13)
   - Reveal-SDK (24)
-  - RxCocoa (5.0.1):
+  - RxCocoa (5.1.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxRelay (5.0.1):
+  - RxRelay (5.1.0):
     - RxSwift (~> 5)
-  - RxSwift (5.0.1)
+  - RxSwift (5.1.0)
 
 DEPENDENCIES:
   - Charts
   - Dip
+  - EasyTipView
   - PinLayout
   - Reveal-SDK
   - RxCocoa
   - RxSwift
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - Charts
     - Dip
+    - EasyTipView
     - PinLayout
     - Reveal-SDK
     - RxCocoa
@@ -33,12 +36,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Charts: 74c9f256eaf0460c0c416522d1cf8c634ea6b286
   Dip: 79509d5dc4f648e10e922ed79c608a7761c52b13
+  EasyTipView: 4f8beae0a82db2ca4a9b5fd658785fc5f61d296b
   PinLayout: e41a50260a76508b7a7fcee8955c76639adc69bc
   Reveal-SDK: 5d7e56b8f018c0a88b3a2c10bf68d598bbd3b071
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
+  RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
+  RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
 
-PODFILE CHECKSUM: 838318dd70ca5d40f8c73c79714de35cdc88a44f
+PODFILE CHECKSUM: db4855ccfd3deedf5c577508fbe93f2a87327cc1
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.7.5

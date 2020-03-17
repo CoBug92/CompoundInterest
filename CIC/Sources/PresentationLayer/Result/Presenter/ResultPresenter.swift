@@ -24,8 +24,19 @@ final class ResultPresenter {
     }
 
     // MARK: - Private methods
-    private func makeViewModel() -> [ResulCellType] {
-        return [.graphic(models: result.capitalByPeriod)] + result.capitalByPeriod.map { .period(model: $0) }
+    private func makeDataSet() -> [ResultDataSet] {
+        return [
+            makeGraphicDataSet(),
+            makePeriodResultsDataSet(),
+        ]
+    }
+
+    private func makeGraphicDataSet() -> ResultDataSet {
+        return (.commonHeader(text: "График доходности"), [.graphic(models: result.capitalByPeriod)])
+    }
+
+    private func makePeriodResultsDataSet() -> ResultDataSet {
+        return (.commonHeader(text: "Доходность по периодам"), result.capitalByPeriod.map { .period(model: $0) })
     }
 
 }
@@ -34,7 +45,11 @@ final class ResultPresenter {
 extension ResultPresenter: ResultViewOutput {
 
     func viewDidLoad() {
-        view?.setup(makeViewModel())
+        view?.setup(makeDataSet())
+    }
+
+    func didPressCloseButton() {
+        router.dismiss()
     }
 
 }

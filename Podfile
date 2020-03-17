@@ -1,7 +1,7 @@
 platform :ios, '11.0'
 
 target 'CIC' do
-  use_frameworks!
+#  use_frameworks!
 
   # Layout
   pod 'PinLayout'
@@ -14,5 +14,7 @@ target 'CIC' do
   pod 'RxSwift'
   # Graphics
   pod 'Charts'
+  # UI
+  pod 'EasyTipView'
 
 end

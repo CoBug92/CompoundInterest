@@ -25,6 +25,7 @@ class CalculateTableCell: UITableViewCell {
 
     // MARK: - Computed properties
     var didPressCalculateButton: Observable<Void> {
+        calculateButton.animate {}
         return calculateButton.rx.tap.asObservable()
     }
 
