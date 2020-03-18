@@ -122,6 +122,11 @@ class CalculatorTableCell: UITableViewCell {
         contentView.pin.height(monthlyIncreaseView.frame.maxY)
     }
 
+    // MARK: - Public methods
+    func closeTip() {
+        currentTip?.dismiss()
+    }
+
     // MARK: - Private methods
     private func addSubviews() {
         contentView.addSubviews([
@@ -133,7 +138,7 @@ class CalculatorTableCell: UITableViewCell {
     }
 
     private func showTip(_ infoType: InfoType) {
-        currentTip?.dismiss()
+        closeTip()
         switch infoType {
         case .depositSize:
             let view = EasyTipView(text: TipsConstant.depositeSize, preferences: EasyTipView.globalPreferences, delegate: nil)

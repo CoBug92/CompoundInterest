@@ -14,6 +14,7 @@ final class MainViewController: UIViewController {
     // MARK: - Subviews
     private lazy var tableView = UITableView().with {
         $0.dataSource = self
+        $0.delegate = self
         $0.estimatedRowHeight = 60
         $0.keyboardDismissMode = .onDrag
         $0.showsVerticalScrollIndicator = false
@@ -24,6 +25,7 @@ final class MainViewController: UIViewController {
 
     // MARK: - Properties
     private let disposeBag = DisposeBag()
+    private let didStartScroll = PublishSubject<Void>()
 
     // MARK: - Observable properties
     private var viewModels = [MainCellType]() {
@@ -116,12 +118,9 @@ extension MainViewController: UITableViewDataSource {
             cell.didChangeMonthlyIncrease
                 .bind(onNext: { [unowned self] in self.output.didChangeMonthlyIncrease($0) })
                 .disposed(by: cell.reuseBag)
-//            Observable.merge(cell.didChangeDepositSizeInfo,
-//                             cell.didChangeDepositTermInfo,
-//                             cell.didChangeInterestRateInfo,
-//                             cell.didChangeMonthlyIncreaseInfo)
-//                .bind(onNext: { self.output.didPressInfo($0) })
-//                .disposed(by: cell.reuseBag)
+            didStartScroll
+                .subscribe(onNext: { cell.closeTip() })
+                .disposed(by: disposeBag)
             return cell
 
         case .calculateButton:
@@ -145,6 +144,14 @@ extension MainViewController: UITableViewDataSource {
                 .disposed(by: disposeBag)
             return cell
         }
+    }
+
+}
+
+extension MainViewController: UITableViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        didStartScroll.onNext(())
     }
 
 }
