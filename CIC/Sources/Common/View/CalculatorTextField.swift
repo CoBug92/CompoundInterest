@@ -26,6 +26,7 @@ final class CalculatorTextField: PaddingTextField {
         super.init(padding: padding)
 
         addSubview(infoButton)
+        self.bringSubviewToFront(infoButton)
     }
 
     required init?(coder aDecoder: NSCoder) {
