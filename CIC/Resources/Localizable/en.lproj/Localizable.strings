@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  CIC
+
+  Created by Bogdan Kostyuchenko on 10/01/2020.
+  Copyright © 2020 Home. All rights reserved.
+*/
+
+"Сумма, которая будет внесена в самом начале" = "Amount to be paid at the very beginning";
+"Срок в месяцах на который вы планируете открыть счет" = "The period in months for which you plan to open an account";
+"Доходный процент за 1 период(месяц)" = "Income interest for 1 period (month)";
+"Сумма, которую вы будете вносить каждый период" = "Amount that you will pay each period";
+"Начальный депозит" = "Initial deposit";
+"Кол-во периодов (месяцев)" = "Number of periods (months)";
+"Доходность за 1 период" = "Profitability for 1 period";
+"Довложения каждый месяц" = "Deliveries every month";
+"Рассчитать" = "Calculate";
+"Ключевые показатели" = "Key indicators";
+"Смотреть график доходности" = "View profitability chart";
+"Внесенная сумма" = "Contributed Amount";
+"Итоговая сумма за все периоды" = "Total for all periods";
+"Заработано на процентах" = "Percent Earned";
+"Заработано процентов" = "Earned Interest";
+"Сложный процент" = "Compound Interest";
+"График доходности" = "Graph of profitability";
+"Доходность по периодам" = "Profitability by periods";
+"Детализация" = "Detail";

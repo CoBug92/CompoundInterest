@@ -80,7 +80,7 @@ final class MainViewController: UIViewController {
     }
 
     private func configure() {
-        title = "Сложный процент"
+        title = "Сложный процент".localized
         view.backgroundColor = .background
         navigationController?.navigationItem.largeTitleDisplayMode = .never
     }

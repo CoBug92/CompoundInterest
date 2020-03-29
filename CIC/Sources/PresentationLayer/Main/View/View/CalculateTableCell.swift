@@ -14,7 +14,7 @@ class CalculateTableCell: UITableViewCell {
 
     // MARK: - Subviews
     private let calculateButton = GradientButton().with {
-        $0.setTitle("Рассчитать", for: .normal)
+        $0.setTitle("Рассчитать".localized, for: .normal)
         $0.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         $0.contentEdgeInsets = UIEdgeInsets(verticalInset: Margin.x(4))
         $0.setCorner(radius: 12)

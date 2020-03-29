@@ -32,11 +32,11 @@ final class ResultPresenter {
     }
 
     private func makeGraphicDataSet() -> ResultDataSet {
-        return (.commonHeader(text: "График доходности"), [.graphic(models: result.capitalByPeriod)])
+        return (.commonHeader(text: "График доходности".localized), [.graphic(models: result.capitalByPeriod)])
     }
 
     private func makePeriodResultsDataSet() -> ResultDataSet {
-        return (.commonHeader(text: "Доходность по периодам"), result.capitalByPeriod.map { .period(model: $0) })
+        return (.commonHeader(text: "Доходность по периодам".localized), result.capitalByPeriod.map { .period(model: $0) })
     }
 
 }

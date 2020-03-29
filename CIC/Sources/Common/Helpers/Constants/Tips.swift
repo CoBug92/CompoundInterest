@@ -10,9 +10,9 @@ import Foundation
 
 class TipsConstant {
 
-    static let depositeSize = "Сумма, которая будет внесена в самом начале"
-    static let depositTerm = "Срок в месяцах на который вы планируете открыть счет"
-    static let interestRate = "Доходный процент за 1 период(месяц)"
-    static let monthlyIncrease = "Сумма, которую вы будете вносить каждый период"
+    static let depositeSize = "Сумма, которая будет внесена в самом начале".localized
+    static let depositTerm = "Срок в месяцах на который вы планируете открыть счет".localized
+    static let interestRate = "Доходный процент за 1 период(месяц)".localized
+    static let monthlyIncrease = "Сумма, которую вы будете вносить каждый период".localized
 
 }

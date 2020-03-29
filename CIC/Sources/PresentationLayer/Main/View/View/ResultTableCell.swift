@@ -15,7 +15,7 @@ class ResultTableCell: UITableViewCell {
     private let titleLabel = UILabel().with {
         $0.textColor = .main
         $0.font = .boldSystemFont(ofSize: 20)
-        $0.text = "Ключевые показатели"
+        $0.text = "Ключевые показатели".localized
     }
     private let containerView = UIView().with {
         $0.backgroundColor = .darkGrey
@@ -23,7 +23,7 @@ class ResultTableCell: UITableViewCell {
         $0.clipsToBounds = true
     }
     private let graphicButton = UIButton(type: .system).with {
-        $0.setTitle("Смотреть график доходности", for: .normal)
+        $0.setTitle("Смотреть график доходности".localized, for: .normal)
         $0.setImage(UIImage(named: "Graphic"), for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 17)
         $0.tintColor = .gradient2
@@ -38,7 +38,7 @@ class ResultTableCell: UITableViewCell {
     private let totalDepositsLabel = UILabel().with {
         $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
-        $0.text = "Внесенная сумма"
+        $0.text = "Внесенная сумма".localized
     }
     private let totalDepositsSeparator = UIView().with {
         $0.backgroundColor = UIColor.white.withAlphaComponent(0.1)
@@ -50,7 +50,7 @@ class ResultTableCell: UITableViewCell {
     private let totalCapLabel = UILabel().with {
         $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
-        $0.text = "Итоговая сумма за все периоды"
+        $0.text = "Итоговая сумма за все периоды".localized
     }
     private let totalCapSeparator = UIView().with {
         $0.backgroundColor = UIColor.white.withAlphaComponent(0.1)
@@ -62,7 +62,7 @@ class ResultTableCell: UITableViewCell {
     private let totalInterestLabel = UILabel().with {
         $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
-        $0.text = "Заработано на процентах"
+        $0.text = "Заработано на процентах".localized
     }
     private let totalInterestSeparator = UIView().with {
         $0.backgroundColor = UIColor.main.withAlphaComponent(0.1)
@@ -74,7 +74,7 @@ class ResultTableCell: UITableViewCell {
     private let totalGrowthLabel = UILabel().with {
         $0.textColor = UIColor.white.withAlphaComponent(0.4)
         $0.font = .systemFont(ofSize: 15)
-        $0.text = "Заработано процентов"
+        $0.text = "Заработано процентов".localized
     }
 
     // MARK: - Computed properties

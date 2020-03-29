@@ -16,7 +16,7 @@ final class ResultViewController: UIViewController {
         $0.backgroundColor = UIColor.background
     }
     private let titleLabel = UILabel().with {
-        $0.text = "Детализация"
+        $0.text = "Детализация".localized
         $0.font = .boldSystemFont(ofSize: 20)
         $0.textColor = .main
     }
@@ -94,6 +94,7 @@ final class ResultViewController: UIViewController {
         navigationView.pin
             .horizontally()
             .height(navigationViewHeight)
+            .top(view.pin.safeArea.top)
 
         closeButton.pin
             .size(closeButtonLength)

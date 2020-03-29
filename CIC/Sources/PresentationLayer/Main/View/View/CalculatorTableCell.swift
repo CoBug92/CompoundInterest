@@ -14,18 +14,18 @@ class CalculatorTableCell: UITableViewCell {
 
     // MARK: - Subviews
     private let depositSizeView = CalculatorView().with {
-        $0.titleLabelText = "Начальный депозит"
+        $0.titleLabelText = "Начальный депозит".localized
     }
     private let depositTermView = CalculatorView().with {
-        $0.titleLabelText = "Кол-во периодов (месяцев)"
+        $0.titleLabelText = "Кол-во периодов (месяцев)".localized
         $0.shouldValidate = true
     }
     private let interestRateView = CalculatorView().with {
-        $0.titleLabelText = "Доходность за 1 период"
+        $0.titleLabelText = "Доходность за 1 период".localized
         $0.keyboardType = .decimalPad
     }
     private let monthlyIncreaseView = CalculatorView().with {
-        $0.titleLabelText = "Довложения каждый месяц"
+        $0.titleLabelText = "Довложения каждый месяц".localized
     }
 
     // MARK: - Properties

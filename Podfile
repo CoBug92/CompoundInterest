@@ -8,7 +8,7 @@ target 'CIC' do
   # Dependency Injection
   pod 'Dip'
   # UI debug
-  pod 'Reveal-SDK', :configurations => ['Debug']
+#  pod 'Reveal-SDK', :configurations => ['Debug']
   # Rx
   pod 'RxCocoa'
   pod 'RxSwift'
