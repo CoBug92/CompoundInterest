@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A46629E523C87AE400C0A6FA"
-               BuildableName = "Compound Interest Calculator.app"
+               BuildableName = "Compound Interest.app"
                BlueprintName = "CIC"
                ReferencedContainer = "container:CIC.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A46629E523C87AE400C0A6FA"
-            BuildableName = "Compound Interest Calculator.app"
+            BuildableName = "Compound Interest.app"
             BlueprintName = "CIC"
             ReferencedContainer = "container:CIC.xcodeproj">
          </BuildableReference>
@@ -64,7 +64,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A46629E523C87AE400C0A6FA"
-            BuildableName = "Compound Interest Calculator.app"
+            BuildableName = "Compound Interest.app"
             BlueprintName = "CIC"
             ReferencedContainer = "container:CIC.xcodeproj">
          </BuildableReference>

@@ -36,7 +36,9 @@ class CalculatorView: UIView {
 
     // MARK: - Computed properties
     var didChangeValue: Observable<Double> {
-        return valueTextField.rx.value.map { Double($0 ?? "0") ?? 0 }.asObservable()
+        return valueTextField.rx.value.map {
+            return Double($0?.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil) ?? "0") ?? 0
+        }.asObservable()
     }
     var didPressInfoButton: Observable<Void> {
         return valueTextField.didPressInfoButton
