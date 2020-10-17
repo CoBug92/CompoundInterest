@@ -45,6 +45,7 @@
 		629ACC7D253A139A002B2088 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ACC7B253A139A002B2088 /* GradientButton.swift */; };
 		629ACC84253A151F002B2088 /* CalculateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629ACC83253A151F002B2088 /* CalculateTableCell.swift */; };
 		62B29063253A0B9E00808DE9 /* String+AttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B29062253A0B9E00808DE9 /* String+AttributedString.swift */; };
+		62FAC439253A8DFA00C8D193 /* String+Converting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62FAC438253A8DFA00C8D193 /* String+Converting.swift */; };
 		A43C718923CBA62100DC14F9 /* UITableView+Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C718823CBA62100DC14F9 /* UITableView+Registration.swift */; };
 		A43C718E23CBA6C100DC14F9 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C718D23CBA6C100DC14F9 /* AppearanceManager.swift */; };
 		A43C719123CBA6D300DC14F9 /* TableViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43C719023CBA6D300DC14F9 /* TableViewAppearance.swift */; };
@@ -100,6 +101,7 @@
 		629ACC7B253A139A002B2088 /* GradientButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		629ACC83253A151F002B2088 /* CalculateTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculateTableCell.swift; sourceTree = "<group>"; };
 		62B29062253A0B9E00808DE9 /* String+AttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedString.swift"; sourceTree = "<group>"; };
+		62FAC438253A8DFA00C8D193 /* String+Converting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Converting.swift"; sourceTree = "<group>"; };
 		A43C718823CBA62100DC14F9 /* UITableView+Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Registration.swift"; sourceTree = "<group>"; };
 		A43C718D23CBA6C100DC14F9 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
 		A43C719023CBA6D300DC14F9 /* TableViewAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewAppearance.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 			children = (
 				62B29062253A0B9E00808DE9 /* String+AttributedString.swift */,
 				6252A6C8253A434F00B0368D /* String+Constants.swift */,
+				62FAC438253A8DFA00C8D193 /* String+Converting.swift */,
 			);
 			path = String;
 			sourceTree = "<group>";
@@ -661,6 +664,7 @@
 				6252A6B2253A198900B0368D /* FloatingActionButton.swift in Sources */,
 				A4662A1323C88A1D00C0A6FA /* UIView+Subviews.swift in Sources */,
 				629ACC7C253A139A002B2088 /* GradientView.swift in Sources */,
+				62FAC439253A8DFA00C8D193 /* String+Converting.swift in Sources */,
 				A4662A1D23C88C3700C0A6FA /* NSObjectProtocol.swift in Sources */,
 				A43C718E23CBA6C100DC14F9 /* AppearanceManager.swift in Sources */,
 				625E2BB2253A5276001EBC9B /* GraphicTableCell.swift in Sources */,
@@ -849,7 +853,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = Q9WXSNT6UT;
 				INFOPLIST_FILE = "$(SRCROOT)/CIC/Resources/Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -871,7 +875,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = Q9WXSNT6UT;
 				INFOPLIST_FILE = "$(SRCROOT)/CIC/Resources/Configuration/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

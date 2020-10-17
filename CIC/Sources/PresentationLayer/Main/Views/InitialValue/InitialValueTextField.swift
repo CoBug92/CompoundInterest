@@ -37,8 +37,7 @@ final class InitialValueTextField: PaddingTextField {
 
     // MARK: - Layout
     private func addSubview() {
-        addSubview(infoButton)
-        bringSubviewToFront(infoButton)
+        insertSubview(infoButton, at: 0)
     }
 
     private func addSubviewLayout() {

@@ -42,7 +42,7 @@ final class InitialValueTableCell: UITableViewCell {
     // MARK: - Computed properties
     var didChangeValue: AnyPublisher<Decimal, Never> {
         return valueTextField.textPublisher
-            .map { Decimal(string: $0 ?? "0") ?? .zero }
+            .map { Decimal(string: $0?.convertCommasToDots() ?? "0") ?? .zero }
             .eraseToAnyPublisher()
     }
     var didPressInfoButton: AnyPublisher<Void, Never> {
@@ -53,6 +53,7 @@ final class InitialValueTableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        configure()
         addSubviews()
         addSubviewsLayout()
     }
@@ -73,9 +74,14 @@ final class InitialValueTableCell: UITableViewCell {
     func setup(with viewModel: InitialValueViewModel) {
         titleLabel.attributedText = viewModel.title
         valueTextField.attributedPlaceholder = viewModel.placeholder
+        valueTextField.keyboardType = viewModel.keyboardType
     }
 
     // MARK: - Private methods
+    private func configure() {
+        contentView.backgroundColor = Colors.Background.primary.color
+    }
+
     private func addSubviews() {
         contentView.addSubviews([
             titleLabel,

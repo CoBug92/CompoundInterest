@@ -50,17 +50,17 @@ final class GraphicTableCell: UITableViewCell {
 
         let xAxis = $0.xAxis
         xAxis.labelPosition = .bottom
-        xAxis.labelFont = .bold(size: .xLabelFont)
-        xAxis.labelTextColor = .white
+        xAxis.labelFont = .regular(size: .xLabelFont)
+        xAxis.labelTextColor = Colors.Text.primary.color
         xAxis.drawGridLinesEnabled = false
 
         let leftAxis = $0.leftAxis
-        leftAxis.labelFont = .systemFont(ofSize: .leftLabelFont)
+        leftAxis.labelFont = .regular(size: .leftLabelFont)
         leftAxis.labelCount = .labelCount
         leftAxis.labelPosition = .outsideChart
         leftAxis.spaceTop = .spaceTop
         leftAxis.axisMinimum = .zero
-        leftAxis.labelTextColor = .white
+        leftAxis.labelTextColor = Colors.Text.primary.color
     }
 
     // MARK: - Init

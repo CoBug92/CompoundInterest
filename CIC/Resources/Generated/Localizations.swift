@@ -46,14 +46,14 @@ public enum Localizations {
     public static let title = Localizations.tr("Localizable", "main.title")
     /// Итоговая сумма за все периоды
     public static let totalCap = Localizations.tr("Localizable", "main.totalCap")
-    /// Заработано процентов
+    /// Заработано процентов от внесенной суммы
     public static let totalGrowth = Localizations.tr("Localizable", "main.totalGrowth")
     /// Заработано на процентах
     public static let totalInterest = Localizations.tr("Localizable", "main.totalInterest")
     public enum Hint {
       /// Сумма, которая будет внесена в самом начале
       public static let initialDeposit = Localizations.tr("Localizable", "main.hint.initialDeposit")
-      /// Сумма, которую вы будете вносить каждый период
+      /// Сумма, которую вы будете вносить каждый период (первый месяц не учитывается, так как вы вносите депозит)
       public static let investments = Localizations.tr("Localizable", "main.hint.investments")
       /// Срок в месяцах на который вы планируете открыть счет
       public static let numberOfPeriods = Localizations.tr("Localizable", "main.hint.numberOfPeriods")

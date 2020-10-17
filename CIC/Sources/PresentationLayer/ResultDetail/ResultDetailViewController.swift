@@ -82,17 +82,13 @@ final class ResultViewController: UIViewController {
     }
 
     // MARK: Life cycle
-    override func loadView() {
-        view = UIView()
-        addSubviews()
-        bindObservables()
-        addSubviewsLayout()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configure()
+        addSubviews()
+        bindObservables()
+        addSubviewsLayout()
         viewModel.viewDidLoad.send()
     }
 
@@ -111,7 +107,8 @@ final class ResultViewController: UIViewController {
 
     private func addSubviewsLayout() {
         navigationView.snp.makeConstraints {
-            $0.trailing.leading.top.equalToSuperview()
+            $0.trailing.leading.equalToSuperview()
+            $0.top.equalTo(view.safeAreaInsets.top)
         }
 
         closeButton.snp.makeConstraints {
@@ -121,9 +118,10 @@ final class ResultViewController: UIViewController {
         }
 
         tableView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview()
+            $0.leading.equalTo(view.safeAreaInsets.left)
+            $0.trailing.equalTo(view.safeAreaInsets.right)
             $0.top.equalTo(navigationView.snp.bottom)
-            $0.bottom.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaInsets.bottom)
         }
     }
 

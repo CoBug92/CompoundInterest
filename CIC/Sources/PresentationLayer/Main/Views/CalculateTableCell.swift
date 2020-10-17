@@ -40,6 +40,7 @@ final class CalculateTableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        configure()
         addSubviews()
         addSubviewsLayout()
     }
@@ -57,6 +58,10 @@ final class CalculateTableCell: UITableViewCell {
     }
 
     // MARK: - Private methods
+    private func configure() {
+        contentView.backgroundColor = Colors.Background.primary.color
+    }
+
     private func addSubviews() {
         contentView.addSubview(calculateButton)
     }

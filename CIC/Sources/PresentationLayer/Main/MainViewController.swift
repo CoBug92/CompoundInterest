@@ -22,7 +22,7 @@ final class MainViewController: UIViewController {
     typealias DataSource = UITableViewDiffableDataSource<MainViewModel.SectionType, MainViewModel.CellType>
 
     // MARK: - Subviews
-    private lazy var tableView = UITableView().with {
+    private lazy var tableView = UITableView(frame: .zero, style: .grouped).with {
         $0.delegate = self
         $0.estimatedRowHeight = .estimatedRowHeight
         $0.keyboardDismissMode = .onDrag
@@ -31,13 +31,12 @@ final class MainViewController: UIViewController {
         $0.register(CalculateTableCell.self)
         $0.register(ResultTableCell.self)
     }
+    private var currentTip: EasyTipView?
 
     // MARK: - Properties
     private let viewModel: MainViewModel
     private var cancellables = Set<AnyCancellable>()
     private lazy var dataSource = makeDataSource()
-
-    // MARK: - Observable properties
 
     // MARK: - Init
     init(with viewModel: MainViewModel) {
@@ -63,9 +62,8 @@ final class MainViewController: UIViewController {
 
     // MARK: - Private methods
     private func configure() {
-        title = Localizations.Main.title
+        navigationItem.title = Localizations.Main.title
         view.backgroundColor = Colors.Background.primary.color
-        navigationController?.navigationItem.largeTitleDisplayMode = .always
     }
 
     private func addSubviews() {
@@ -74,13 +72,19 @@ final class MainViewController: UIViewController {
 
     private func bindObservable() {
         viewModel.$dataSourceSnapshot
-            .sink { [weak self] in self?.dataSource.apply($0, animatingDifferences: false) }
+            .map { [weak self] in self?.dataSource.apply($0, animatingDifferences: false) }
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                if let section = self?.dataSource.snapshot().indexOfSection(.keyIndicators) {
+                    self?.tableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .top, animated: true)
+                }
+            }
             .store(in: &cancellables)
     }
 
     private func addSubviewsLayout() {
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
 
@@ -91,8 +95,6 @@ final class MainViewController: UIViewController {
         let viewController = ResultViewController(with: ResultDetailViewModel(with: capitalByPeriod))
         present(viewController, animated: true)
     }
-
-    private var currentTip: EasyTipView?
 
     private func showTip(with text: String, on view: UIView) {
         closeTip()
@@ -165,7 +167,8 @@ final class MainViewController: UIViewController {
                         .store(in: &cell.reuseCancellables)
                     return cell
                 }
-            })
+            }
+        )
     }
 
 }

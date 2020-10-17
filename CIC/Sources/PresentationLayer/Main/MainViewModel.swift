@@ -66,7 +66,9 @@ final class MainViewModel {
                 }
             }
             .subscribe(on: DispatchQueue.global())
-            .map { self.calculateResult(initialDeposit: $0, numberOfPeriods: $1, interestRate: $2, monthlyIncrease: $3) }
+            .map { [weak self] in
+                self?.calculateResult(initialDeposit: $0, numberOfPeriods: $1, interestRate: $2, monthlyIncrease: $3)
+            }
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in self?.showKeyIndicators() }
             .store(in: &cancellables)
@@ -94,8 +96,8 @@ final class MainViewModel {
         if dataSourceSnapshot.sectionIdentifiers.contains(.keyIndicators) {
             dataSourceSnapshot.deleteSections([.keyIndicators])
         }
-        dataSourceSnapshot.appendSections([.keyIndicators])
         let viewModel = ResultViewModel(with: result)
+        dataSourceSnapshot.appendSections([.keyIndicators])
         dataSourceSnapshot.appendItems([.result(viewModel)], toSection: .keyIndicators)
     }
 
@@ -114,10 +116,10 @@ final class MainViewModel {
             capitalByPeriod.append(Result.CapitalByPeriod(period: period + 1, result: total))
         }
 
-        let decimalDepositTerm = Decimal(numberOfPeriods)
+        let decimalDepositTerm = Decimal(numberOfPeriods - 1)
         let totalDeposits = decimalDepositTerm * monthlyIncrease + initialDeposit
         let totalInterest = total - initialDeposit - (monthlyIncrease * decimalDepositTerm)
-        let totalGrowth = (total - initialDeposit) / initialDeposit * 100
+        let totalGrowth = totalInterest * 100 / initialDeposit
 
         self.result = Result(totalCap: total,
                              totalInterest: totalInterest,

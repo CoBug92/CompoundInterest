@@ -21,11 +21,11 @@
 "main.contributedAmount" = "Внесенная сумма";
 "main.totalCap" = "Итоговая сумма за все периоды";
 "main.totalInterest" = "Заработано на процентах";
-"main.totalGrowth" = "Заработано процентов";
+"main.totalGrowth" = "Заработано процентов от внесенной суммы";
 "main.hint.initialDeposit" = "Сумма, которая будет внесена в самом начале";
 "main.hint.numberOfPeriods" = "Срок в месяцах на который вы планируете открыть счет";
 "main.hint.profitability" = "Доходный процент за 1 период(месяц)";
-"main.hint.investments" = "Сумма, которую вы будете вносить каждый период";
+"main.hint.investments" = "Сумма, которую вы будете вносить каждый период (первый месяц не учитывается, так как вы вносите депозит)";
 
 // MARK: - Detail
 "detail.chart" = "График доходности";

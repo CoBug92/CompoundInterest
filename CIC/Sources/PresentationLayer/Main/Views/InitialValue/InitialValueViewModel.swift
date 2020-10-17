@@ -67,12 +67,26 @@ struct InitialValueViewModel: Hashable {
             }
         }
 
+        var keyboardType: UIKeyboardType {
+            switch self {
+            case .initialDeposit:
+                return .decimalPad
+            case .numberOfPeriods:
+                return .numberPad
+            case .profitability:
+                return .decimalPad
+            case .investments:
+                return .numberPad
+            }
+        }
+
     }
 
     // MARK: - Properties
     let title: NSAttributedString
     let placeholder: NSAttributedString
     let hint: String
+    let keyboardType: UIKeyboardType
 
     // MARK: - Init
     init(with category: Category) {
@@ -85,5 +99,7 @@ struct InitialValueViewModel: Hashable {
                                                          kern: .valueKern)
 
         hint = category.hint
+
+        keyboardType = category.keyboardType
     }
 }

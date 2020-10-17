@@ -36,22 +36,30 @@ final class ResultTableCell: UITableViewCell {
         $0.backgroundColor = Colors.separator.color
     }
     private let depositsLabel = UILabel()
-    private let totalDepositsLabel = UILabel()
+    private let totalDepositsLabel = UILabel().with {
+        $0.numberOfLines = 0
+    }
     private let totalDepositsSeparator = UIView().with {
         $0.backgroundColor = Colors.separator.color
     }
     private let capLabel = UILabel()
-    private let totalCapLabel = UILabel()
+    private let totalCapLabel = UILabel().with {
+        $0.numberOfLines = 0
+    }
     private let totalCapSeparator = UIView().with {
         $0.backgroundColor = Colors.separator.color
     }
     private let interestLabel = UILabel()
-    private let totalInterestLabel = UILabel()
+    private let totalInterestLabel = UILabel().with {
+        $0.numberOfLines = 0
+    }
     private let totalInterestSeparator = UIView().with {
         $0.backgroundColor = Colors.separator.color
     }
     private let growthLabel = UILabel()
-    private let totalGrowthLabel = UILabel()
+    private let totalGrowthLabel = UILabel().with {
+        $0.numberOfLines = 0
+    }
 
     // MARK: - Properties
     var reuseCancellables = Set<AnyCancellable>()
@@ -65,6 +73,7 @@ final class ResultTableCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        configure()
         addSubviews()
         addSubviewsLayout()
     }
@@ -99,6 +108,10 @@ final class ResultTableCell: UITableViewCell {
     }
 
     // MARK: - Private methods
+    private func configure() {
+        contentView.backgroundColor = Colors.Background.primary.color
+    }
+
     private func addSubviews() {
         contentView.addSubview(containerView)
         containerView.addSubviews([
