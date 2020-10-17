@@ -2,7 +2,7 @@
 //  NSObjectProtocol.swift
 //  CIC
 //
-//  Created by Bogdan Kostyuchenko on 10/01/2020.
+//  Created by Костюченко Богдан Сергеевич on 16.10.2020.
 //  Copyright © 2020 Home. All rights reserved.
 //
 

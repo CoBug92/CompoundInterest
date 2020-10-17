@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Charts",
+        "repositoryURL": "https://github.com/danielgindi/Charts",
+        "state": {
+          "branch": null,
+          "revision": "66546404a6739173b8e436ab6bc1f2897cd08594",
+          "version": "3.6.0"
+        }
+      },
+      {
+        "package": "CombineCocoa",
+        "repositoryURL": "https://github.com/CombineCommunity/CombineCocoa",
+        "state": {
+          "branch": null,
+          "revision": "3619a1dcea7f7fedcbb7650010b6e2c8a27c4a7e",
+          "version": "0.2.1"
+        }
+      },
+      {
+        "package": "EasyTipView",
+        "repositoryURL": "https://github.com/nacho4d/EasyTipView",
+        "state": {
+          "branch": null,
+          "revision": "edd97f86dbcac201a1f50e3d8a4c50fc5bbd6a78",
+          "version": "2.0.7"
+        }
+      },
+      {
+        "package": "SnapKit",
+        "repositoryURL": "https://github.com/SnapKit/SnapKit",
+        "state": {
+          "branch": null,
+          "revision": "d458564516e5676af9c70b4f4b2a9178294f1bc6",
+          "version": "5.0.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,27 @@
+xcassets:
+- inputs: CIC/Resources/Assets/Assets.xcassets
+  outputs:
+    output: CIC/Resources/Generated/Images.swift
+    templateName: swift5
+    params:
+      enumName: Images
+      publicAccess: 1
+      noAllValues: 1
+- inputs: CIC/Resources/Assets/Colors.xcassets
+  outputs:
+    templateName: swift5
+    output: CIC/Resources/Generated/Colors.swift
+    params:
+      enumName: Colors
+      publicAccess: 1
+      noAllValues: 1
+
+strings:
+- inputs: CIC/Resources/Localizable/ru.lproj/Localizable.strings
+  outputs:
+    templateName: structured-swift5
+    output: CIC/Resources/Generated/Localizations.swift
+    params:
+      enumName: Localizations
+      publicAccess: 1
+      noComments: 0

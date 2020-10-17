@@ -6,22 +6,28 @@
   Copyright © 2020 Home. All rights reserved.
 */
 
-"Сумма, которая будет внесена в самом начале" = "Amount to be paid at the very beginning";
-"Срок в месяцах на который вы планируете открыть счет" = "The period in months for which you plan to open an account";
-"Доходный процент за 1 период(месяц)" = "Income interest for 1 period (month)";
-"Сумма, которую вы будете вносить каждый период" = "Amount that you will pay each period";
-"Начальный депозит" = "Initial deposit";
-"Кол-во периодов (месяцев)" = "Number of periods (months)";
-"Доходность за 1 период" = "Profitability for 1 period";
-"Довложения каждый месяц" = "Deliveries every month";
-"Рассчитать" = "Calculate";
-"Ключевые показатели" = "Key indicators";
-"Смотреть график доходности" = "View profitability chart";
-"Внесенная сумма" = "Contributed Amount";
-"Итоговая сумма за все периоды" = "Total for all periods";
-"Заработано на процентах" = "Percent Earned";
-"Заработано процентов" = "Earned Interest";
-"Сложный процент" = "Compound Interest";
-"График доходности" = "Graph of profitability";
-"Доходность по периодам" = "Profitability by periods";
-"Детализация" = "Detail";
+// MARK: - Common
+"common.month" = "Month";
+
+// MARK: - Main
+"main.title" = "Compound Interest";
+"main.initialDeposit" = "Initial deposit";
+"main.numberOfPeriods" = "Number of months";
+"main.profitability" = "Profitability for 1 month";
+"main.investments" = "Investments every month";
+"main.calculate" = "Calculate";
+"main.keyIndicators" = "Key indicators";
+"main.seeGraphic" = "View profitability chart";
+"main.contributedAmount" = "Contributed Amount";
+"main.totalCap" = "Total for all periods";
+"main.totalInterest" = "Percent Earned";
+"main.totalGrowth" = "Earned Interest";
+"main.hint.initialDeposit" = "Amount to be paid at the very beginning";
+"main.hint.numberOfPeriods" = "The period in months for which you plan to open an account";
+"main.hint.profitability" = "Income interest for 1 month";
+"main.hint.investments" = "Amount that you will pay each period";
+
+// MARK: - Detail
+"detail.chart" = "Profitability chart";
+"detail.yieldPeriod" = "Profitability by periods";
+"detail.month" = "Period";

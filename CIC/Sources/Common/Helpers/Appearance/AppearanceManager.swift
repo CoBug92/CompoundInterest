@@ -2,28 +2,19 @@
 //  AppearanceManager.swift
 //  CIC
 //
-//  Created by Bogdan Kostyuchenko on 12/01/2020.
+//  Created by Костюченко Богдан Сергеевич on 16.10.2020.
 //  Copyright © 2020 Home. All rights reserved.
 //
 
 import UIKit
 
-final class AppearanceManager: NSObject {
+final class AppearanceManager {
 
-    private func configure() {
+    static func configure() {
         TableViewAppearance.configure()
         TableViewCellAppearance.configure()
-        UINavigationBarAppearance.configure()
+        NavigationBarAppearance.configure()
         TipsAppearance.configure()
-    }
-
-}
-
-// MARK: - UIApplicationDelegate
-extension AppearanceManager: UIApplicationDelegate {
-
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-        configure()
     }
 
 }

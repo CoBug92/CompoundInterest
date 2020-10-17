@@ -2,7 +2,7 @@
 //  UIEdgeInsets+Init.swift
 //  CIC
 //
-//  Created by Bogdan Kostyuchenko on 14/01/2020.
+//  Created by Костюченко Богдан Сергеевич on 16.10.2020.
 //  Copyright © 2020 Home. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ extension UIEdgeInsets {
         self.init(top: value, left: value, bottom: value, right: value)
     }
 
-    init(verticalInset: CGFloat = 0, horizontalInset: CGFloat = 0) {
+    init(verticalInset: CGFloat = .zero, horizontalInset: CGFloat = .zero) {
         self.init(top: verticalInset, left: horizontalInset, bottom: verticalInset, right: horizontalInset)
     }
 

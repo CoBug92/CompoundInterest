@@ -2,7 +2,7 @@
 //  UIView+Vibration.swift
 //  CIC
 //
-//  Created by Bogdan Kostyuchenko on 2/17/20.
+//  Created by Костюченко Богдан Сергеевич on 16.10.2020.
 //  Copyright © 2020 Home. All rights reserved.
 //
 
