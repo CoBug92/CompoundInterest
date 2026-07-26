@@ -1,0 +1,53 @@
+// MARK: - App
+"app.name" = "Compound Interest";
+
+// MARK: - Chart
+"chart.capital.axis" = "Capital";
+"chart.month.axis" = "Month";
+"chart.selected.month" = "Month %d";
+"chart.section.title" = "Yield chart";
+"chart.title" = "Capital over time";
+
+// MARK: - Main
+"main.calculate.button.title" = "Calculate";
+"main.contributionFrequency.monthly.compactTitle" = "Monthly";
+"main.contributionFrequency.monthly.title" = "Monthly";
+"main.contributionFrequency.none.compactTitle" = "None";
+"main.contributionFrequency.none.title" = "No contributions";
+"main.contributionFrequency.quarterly.compactTitle" = "Quarterly";
+"main.contributionFrequency.quarterly.title" = "Quarterly";
+"main.contributionFrequency.yearly.compactTitle" = "Yearly";
+"main.contributionFrequency.yearly.title" = "Yearly";
+"main.durationUnit.months.title" = "Months";
+"main.durationUnit.years.title" = "Years";
+"main.periods.section.title" = "Income by month";
+
+// MARK: - Main Parameter
+"main.parameter.annualInterestRate.hint" = "Expected annual return.";
+"main.parameter.annualInterestRate.placeholder" = "5";
+"main.parameter.annualInterestRate.title" = "Annual return";
+"main.parameter.initialInvestment.hint" = "The amount you deposit at the beginning.";
+"main.parameter.initialInvestment.placeholder" = "10 000";
+"main.parameter.initialInvestment.title" = "Initial investment";
+"main.parameter.contribution.monthly.title" = "Monthly contribution";
+"main.parameter.contribution.none.title" = "Contribution";
+"main.parameter.contribution.quarterly.title" = "Quarterly contribution";
+"main.parameter.contribution.yearly.title" = "Yearly contribution";
+"main.parameter.investmentYears.hint" = "How long you plan to keep the investment.";
+"main.parameter.investmentYears.placeholder" = "20";
+"main.parameter.investmentYears.title" = "Years";
+"main.parameter.investmentMonths.placeholder" = "240";
+"main.parameter.investmentMonths.title" = "Months";
+"main.parameter.monthlyContribution.hint" = "The amount you add each month after the initial deposit.";
+"main.parameter.monthlyContribution.placeholder" = "500";
+"main.parameter.monthlyContribution.title" = "Monthly contribution";
+
+// MARK: - Metrics
+"metrics.depositedAmount.title" = "Amount contributed";
+"metrics.earnedInterest.title" = "Interest earned";
+"metrics.growthRate.title" = "Total growth";
+"metrics.section.title" = "Key metrics";
+"metrics.totalCapital.title" = "Total amount";
+
+// MARK: - Period
+"period.month.title" = "Month";

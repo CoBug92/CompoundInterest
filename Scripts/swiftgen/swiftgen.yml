@@ -1,0 +1,11 @@
+strings:
+  - inputs:
+      - "../../Compound Interest/Resources/Localization/ru.lproj/Localizable.strings"
+      - "../../Compound Interest/Resources/Localization/ru.lproj/Localizable.stringsdict"
+    outputs:
+      - templateName: structured-swift5
+        output: "../../Compound Interest/Resources/Generated/Localizations.swift"
+        params:
+          enumName: Localizations
+          publicAccess: true
+          noComments: false

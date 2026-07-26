@@ -1,0 +1,53 @@
+// MARK: - App
+"app.name" = "Сложный процент";
+
+// MARK: - Chart
+"chart.capital.axis" = "Капитал";
+"chart.month.axis" = "Месяц";
+"chart.selected.month" = "%d месяц";
+"chart.section.title" = "График доходности";
+"chart.title" = "Капитал по времени";
+
+// MARK: - Main
+"main.calculate.button.title" = "Рассчитать";
+"main.contributionFrequency.monthly.compactTitle" = "Ежемес";
+"main.contributionFrequency.monthly.title" = "Ежемесячно";
+"main.contributionFrequency.none.compactTitle" = "Нет";
+"main.contributionFrequency.none.title" = "Без пополнений";
+"main.contributionFrequency.quarterly.compactTitle" = "Ежекв";
+"main.contributionFrequency.quarterly.title" = "Ежеквартально";
+"main.contributionFrequency.yearly.compactTitle" = "Ежегод";
+"main.contributionFrequency.yearly.title" = "Ежегодно";
+"main.durationUnit.months.title" = "Месяцы";
+"main.durationUnit.years.title" = "Годы";
+"main.periods.section.title" = "Доход по месяцам";
+
+// MARK: - Main Parameter
+"main.parameter.annualInterestRate.hint" = "Ожидаемая годовая доходность.";
+"main.parameter.annualInterestRate.placeholder" = "5";
+"main.parameter.annualInterestRate.title" = "Годовая доходность";
+"main.parameter.initialInvestment.hint" = "Сумма, которую вы вносите в самом начале.";
+"main.parameter.initialInvestment.placeholder" = "10 000";
+"main.parameter.initialInvestment.title" = "Начальный взнос";
+"main.parameter.contribution.monthly.title" = "Ежемесячный взнос";
+"main.parameter.contribution.none.title" = "Пополнение";
+"main.parameter.contribution.quarterly.title" = "Ежеквартальный взнос";
+"main.parameter.contribution.yearly.title" = "Ежегодный взнос";
+"main.parameter.investmentYears.hint" = "Срок, на который вы планируете оставить инвестицию.";
+"main.parameter.investmentYears.placeholder" = "20";
+"main.parameter.investmentYears.title" = "Лет";
+"main.parameter.investmentMonths.placeholder" = "240";
+"main.parameter.investmentMonths.title" = "Месяцев";
+"main.parameter.monthlyContribution.hint" = "Сумма, которую вы добавляете каждый месяц после начального взноса.";
+"main.parameter.monthlyContribution.placeholder" = "500";
+"main.parameter.monthlyContribution.title" = "Ежемесячный взнос";
+
+// MARK: - Metrics
+"metrics.depositedAmount.title" = "Внесённая сумма";
+"metrics.earnedInterest.title" = "Доход от процентов";
+"metrics.growthRate.title" = "Общий рост";
+"metrics.section.title" = "Ключевые показатели";
+"metrics.totalCapital.title" = "Итоговая сумма";
+
+// MARK: - Period
+"period.month.title" = "Месяц";

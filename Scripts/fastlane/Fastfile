@@ -1,0 +1,70 @@
+fastlane_version "2.220.0"
+require 'json'
+
+default_platform(:ios)
+
+APP_STORE_CONNECT_API_KEY_ID = ENV["APP_STORE_CONNECT_API_KEY_ID"]
+APP_STORE_CONNECT_API_ISSUER_ID = ENV["APP_STORE_CONNECT_API_ISSUER_ID"]
+APP_STORE_CONNECT_API_KEY_CONTENT = ENV["APP_STORE_CONNECT_API_KEY_CONTENT"]
+TEMP_KEYCHAIN_PASSWORD = ENV["TEMP_KEYCHAIN_PASSWORD"]
+
+platform :ios do
+
+  app_identifier = CredentialsManager::AppfileConfig.try_fetch_value(:app_identifier)
+  api_key = {
+    'key_id' => APP_STORE_CONNECT_API_KEY_ID,
+    'issuer_id' => APP_STORE_CONNECT_API_ISSUER_ID,
+    'key' => APP_STORE_CONNECT_API_KEY_CONTENT,
+    'in_house': false
+  }
+
+  before_all do |lane, options|
+    require 'dotenv'
+    Dotenv.load
+  end
+
+  desc "Deploy app to Test Flight"
+  lane :deploy_to_tf do
+    app_store_connect_api_key(
+      key_id: APP_STORE_CONNECT_API_KEY_ID,
+      issuer_id: APP_STORE_CONNECT_API_ISSUER_ID,
+      key_content: APP_STORE_CONNECT_API_KEY_CONTENT
+    )
+    unlock_keychain(
+      path: "~/Library/Keychains/login.keychain-db",
+      password: TEMP_KEYCHAIN_PASSWORD
+    )
+    match(
+      api_key: api_key
+    )
+    increment_version_number(
+      bump_type: "patch",
+      xcodeproj: ENV["XCODE_PROJ_PATH"]
+    )
+    gym(
+      project: ENV["XCODE_PROJ_PATH"],
+      configuration: "Release",
+      scheme: ENV["TARGET_NAME"],
+      silent: false,
+      clean: true,
+      export_method: "app-store",
+      include_symbols: true,
+      export_options: {
+        signingStyle: "manual",
+        provisioningProfiles: {
+          app_identifier => "match AppStore #{app_identifier}",
+        }
+      }
+    )
+    upload_to_testflight(
+      api_key: api_key
+    )
+    info_plist_path = "../#{ENV['PROJECT_NAME']}/Resources/Plist/Info.plist"
+    git_add(path: info_plist_path)
+    git_commit(path: info_plist_path, message: 'Bump version and build number')
+    push_to_git_remote(
+      local_branch: "master",
+      remote_branch: "master",
+    )
+  end
+end

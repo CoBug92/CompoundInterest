@@ -1,0 +1,5 @@
+git_url("git@github.com:SE-Kostyuchenko/Apple-Certificates.git")
+type("appstore")
+storage_mode("git")
+git_branch("Team_Name")
+readonly(true)
