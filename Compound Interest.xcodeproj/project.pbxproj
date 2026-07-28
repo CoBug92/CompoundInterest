@@ -16,14 +16,15 @@
 		3220E65D8B3F90F9AB71E7B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF086DBAF4E729180A8D5996 /* Preview Assets.xcassets */; };
 		4E38A8A483B3E1088A36BB8D /* ContributionFrequencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FBD2BB2B340D3A5A6A1290E /* ContributionFrequencyView.swift */; };
 		560A8F9B4DD001DBBC58629F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7B94AEDE741AFE020AF352 /* MainViewModel.swift */; };
-		56B83B8C16B64B63A78F9E20 /* MonthlyCapitalPDFDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B7A5E43816C4704B7182E09 /* MonthlyCapitalPDFDocument.swift */; };
 		59EFAC60DD9AF9B63D5EAA0E /* InvestmentDurationUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95087A18E78E1CCC80FCF9CC /* InvestmentDurationUnit.swift */; };
 		5A913ADE9B9BD0650A83698A /* SFSymbols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B3EDEE838DDBA7E38D4843A /* SFSymbols.swift */; };
 		642C8B3BB946D513D5F7B7CE /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 9C14D12B35C64A3D29FD3314 /* Localizable.stringsdict */; };
 		73DF3ECC747967BC32AC7F38 /* Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1887E6DF0DF66FE1C9BC5E36 /* Localizations.swift */; };
 		76CBEC646549C8F0ADB19C18 /* KeyMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD782C840BE1625E8C11B379 /* KeyMetricsView.swift */; };
 		79FF82668D17B5D3933B8941 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D86B273B06D2F790B8828310 /* Images.xcassets */; };
+		895ACD0C0E0A67EB1AD650BE /* ChartSelectionOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906FC6AEE5C664FD2456F08A /* ChartSelectionOverlay.swift */; };
 		8E6981FEE4F72209123BDA07 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB24BEEE798D69E42B5576 /* Decimal.swift */; };
+		9121F2A1873E68E2E32AF58C /* MonthlyCapitalPDFDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3BC5D82E90F1E277ACB03ED /* MonthlyCapitalPDFDocument.swift */; };
 		930D24C2028FAEAADA6FF13A /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E63371921186AD815C5C529 /* UIApplication.swift */; };
 		9693D6E515CB082947838863 /* KeyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1A5548E31CB56DD0BB8BB7 /* KeyIndicator.swift */; };
 		9C13422F33F02418C9C508AD /* DecimalTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F158856B9DE7B9C1E097BBA /* DecimalTextFormatter.swift */; };
@@ -37,7 +38,6 @@
 		DFB098ABE5035D32442C2C54 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A360026366A347A321F2BF /* NumberFormatter.swift */; };
 		E4548EC420EF0EF8FB702B7C /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C903783C96AF38B2C9CB61 /* ChartView.swift */; };
 		E580B8566800A98D44CA7567 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33114843835EE439423DBEA7 /* MainApp.swift */; };
-		E7E4A5B9F6A6409EB3582F12 /* ChartSelectionOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF86D1B153E4DE18E424504 /* ChartSelectionOverlay.swift */; };
 		EDD130AFC3C131AE481C899F /* ContributionFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE3B8352CBBA0204CF7A53C /* ContributionFrequency.swift */; };
 		EF98ECCA04F30F8656E9C085 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9A195CABE14B381B328F268 /* Colors.xcassets */; };
 		F303CAAFB820E3E89726A2A3 /* KeyIndicatorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D4CF496D93F91041C07F02 /* KeyIndicatorResult.swift */; };
@@ -58,16 +58,15 @@
 		3980779EB745C7646AB28176 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		3B3EDEE838DDBA7E38D4843A /* SFSymbols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSymbols.swift; sourceTree = "<group>"; };
 		3F158856B9DE7B9C1E097BBA /* DecimalTextFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTextFormatter.swift; sourceTree = "<group>"; };
-		4DF86D1B153E4DE18E424504 /* ChartSelectionOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSelectionOverlay.swift; sourceTree = "<group>"; };
 		4F1A5548E31CB56DD0BB8BB7 /* KeyIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyIndicator.swift; sourceTree = "<group>"; };
 		4F3A3FC8A29CDE563883052A /* MainParameterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainParameterInputView.swift; sourceTree = "<group>"; };
 		513D6A0F10185300F02031B3 /* AppFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFont.swift; sourceTree = "<group>"; };
 		59FB24BEEE798D69E42B5576 /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
 		697A2BE254481AA7FD379275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		6B7A5E43816C4704B7182E09 /* MonthlyCapitalPDFDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCapitalPDFDocument.swift; sourceTree = "<group>"; };
 		78D4CF496D93F91041C07F02 /* KeyIndicatorResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyIndicatorResult.swift; sourceTree = "<group>"; };
 		80C903783C96AF38B2C9CB61 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		8CE3B8352CBBA0204CF7A53C /* ContributionFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionFrequency.swift; sourceTree = "<group>"; };
+		906FC6AEE5C664FD2456F08A /* ChartSelectionOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSelectionOverlay.swift; sourceTree = "<group>"; };
 		95087A18E78E1CCC80FCF9CC /* InvestmentDurationUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestmentDurationUnit.swift; sourceTree = "<group>"; };
 		9795F4D5C0E7ECA613D9E4FF /* KeyMetricRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricRowView.swift; sourceTree = "<group>"; };
 		9E63371921186AD815C5C529 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		B9A195CABE14B381B328F268 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		BE9D2C8D8DD169804918A4F9 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		C3A6460D83B9C774246281CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		C3BC5D82E90F1E277ACB03ED /* MonthlyCapitalPDFDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCapitalPDFDocument.swift; sourceTree = "<group>"; };
 		CCE083F905AF1AF16FDC019A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		CF086DBAF4E729180A8D5996 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D7709297342723B5E04AC648 /* YieldChartSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YieldChartSectionView.swift; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 				08DB56AB5C32FF36F61E29AE /* View */,
 				AE00F74CD0584E9819ACB55B /* MainView.swift */,
 				ED7B94AEDE741AFE020AF352 /* MainViewModel.swift */,
-				6B7A5E43816C4704B7182E09 /* MonthlyCapitalPDFDocument.swift */,
+				C3BC5D82E90F1E277ACB03ED /* MonthlyCapitalPDFDocument.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -203,7 +203,7 @@
 		C1583BC058941E6A24D10612 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
-				4DF86D1B153E4DE18E424504 /* ChartSelectionOverlay.swift */,
+				906FC6AEE5C664FD2456F08A /* ChartSelectionOverlay.swift */,
 				80C903783C96AF38B2C9CB61 /* ChartView.swift */,
 			);
 			path = Chart;
@@ -379,7 +379,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEB32F0379C5EEF1BC03EB86 /* AppFont.swift in Sources */,
-				E7E4A5B9F6A6409EB3582F12 /* ChartSelectionOverlay.swift in Sources */,
+				895ACD0C0E0A67EB1AD650BE /* ChartSelectionOverlay.swift in Sources */,
 				E4548EC420EF0EF8FB702B7C /* ChartView.swift in Sources */,
 				EDD130AFC3C131AE481C899F /* ContributionFrequency.swift in Sources */,
 				4E38A8A483B3E1088A36BB8D /* ContributionFrequencyView.swift in Sources */,
@@ -401,7 +401,7 @@
 				CC045E1D6C6C9D5371F52886 /* MainView.swift in Sources */,
 				560A8F9B4DD001DBBC58629F /* MainViewModel.swift in Sources */,
 				13E71104758BFF589C56AAA6 /* Margin.swift in Sources */,
-				56B83B8C16B64B63A78F9E20 /* MonthlyCapitalPDFDocument.swift in Sources */,
+				9121F2A1873E68E2E32AF58C /* MonthlyCapitalPDFDocument.swift in Sources */,
 				DFB098ABE5035D32442C2C54 /* NumberFormatter.swift in Sources */,
 				FBA87B785226D8FA6AA2ED0E /* PeriodView.swift in Sources */,
 				21A082CAD657EF0FCDD4574E /* RootView.swift in Sources */,
@@ -533,10 +533,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
+				GCC_PREPROCESSOR_DEFINITIONS = "DEBUG=1 $(inherited)";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -565,17 +562,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Compound Interest/Resources/Assets/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = Q9WXSNT6UT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited)";
-				EXCLUDED_SOURCE_FILE_NAMES = (
-					"$(inherited)",
-					Resources/Plist/Info.plist,
-				);
+				EXCLUDED_SOURCE_FILE_NAMES = "$(inherited) Resources/Plist/Info.plist";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Compound Interest/Resources/Plist/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сложный процент";
@@ -592,11 +586,8 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_OUTPUT_FORMAT = "same-as-input";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"'@executable_path/Frameworks'",
-				);
-				MARKETING_VERSION = 1.0.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/Frameworks'";
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.kostyuchenko.compoundInterest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match Development ru.kostyuchenko.compoundInterest";
@@ -627,10 +618,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "$(inherited)";
-				EXCLUDED_SOURCE_FILE_NAMES = (
-					"$(inherited)",
-					Resources/Plist/Info.plist,
-				);
+				EXCLUDED_SOURCE_FILE_NAMES = "$(inherited) Resources/Plist/Info.plist";
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Compound Interest/Resources/Plist/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сложный процент";
@@ -647,11 +635,8 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_OUTPUT_FORMAT = "same-as-input";
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"'@executable_path/Frameworks'",
-				);
-				MARKETING_VERSION = 1.0.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) '@executable_path/Frameworks'";
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.kostyuchenko.compoundInterest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "match AppStore ru.kostyuchenko.compoundInterest";

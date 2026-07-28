@@ -21,7 +21,7 @@ struct MainView: View {
                 .padding(.top, Margin.x4)
         }
         .background(Color(.Background.primary))
-        .scrollDismissesKeyboard(.interactively)
+        .scrollDismissesKeyboard(.immediately)
         .animation(.keyMetricsAppearance, value: viewModel.result)
     }
 
@@ -80,7 +80,7 @@ struct MainView: View {
     private var calculateButton: some View {
         GradientButton(
             title: Localizations.Main.Calculate.Button.title,
-            action: viewModel.calculateResult
+            action: calculateResult
         )
         .padding(.top, Margin.x8)
     }
@@ -138,6 +138,11 @@ struct MainView: View {
     }
 
     // MARK: - Private methods
+
+    private func calculateResult() {
+        UIApplication.shared.endEditing()
+        viewModel.calculateResult()
+    }
 
     private func binding(for parameter: MainParameter) -> Binding<Decimal?> {
         switch parameter {

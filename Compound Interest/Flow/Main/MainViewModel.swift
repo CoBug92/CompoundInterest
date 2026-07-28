@@ -8,12 +8,12 @@ final class MainViewModel: ObservableObject {
 
     // MARK: - Observable properties
 
-    @Published var initialInvestment: Decimal? = 100000
-    @Published var monthlyContribution: Decimal? = 10000
+    @Published var initialInvestment: Decimal?
+    @Published var monthlyContribution: Decimal?
     @Published var contributionFrequency: ContributionFrequency = .monthly
-    @Published var investmentDuration: Decimal? = 5
+    @Published var investmentDuration: Decimal?
     @Published var investmentDurationUnit: InvestmentDurationUnit = .years
-    @Published var annualInterestRate: Decimal? = 16
+    @Published var annualInterestRate: Decimal?
     @Published private(set) var result: KeyIndicatorResult?
 
     // MARK: - Computed properties

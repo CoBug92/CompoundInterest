@@ -25,6 +25,9 @@ if which swiftlint >/dev/null; then
     status=$?
     if [ $status -ne 0 ]; then
         echo "warning: SwiftLint finished with status $status"
+        if [ "${SWIFTLINT_STRICT:-0}" = "1" ]; then
+            exit $status
+        fi
         exit 0
     fi
 else

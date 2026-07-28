@@ -106,6 +106,41 @@ xcodebuild \
 
 Если в sandbox/CI нет доступного Simulator runtime, `xcodebuild` может падать на CoreSimulator tooling до запуска приложения. В таком случае отдельно проверяйте SwiftLint и локальную сборку в Xcode.
 
+## CI на Mac mini
+
+Рекомендуемый минимальный вариант — GitHub Actions self-hosted runner на Mac mini. В репозитории уже есть workflow `.github/workflows/ci.yml`, который запускается на `push`, `pull_request` и вручную через `workflow_dispatch`.
+
+Локально тот же набор проверок запускается командой:
+
+```sh
+Scripts/ci.sh
+```
+
+Что делает CI:
+
+- устанавливает зависимости из `Brewfile` и `Gemfile`;
+- создаёт локальный `Scripts/project.env` для runner-а;
+- запускает SwiftGen/XcodeGen;
+- запускает SwiftLint;
+- собирает `CompoundInterest` в `Debug` под `iphoneos` без code signing.
+
+На Mac mini нужно один раз установить GitHub Actions runner и добавить ему labels `self-hosted`, `macOS`, `personal` и `compound-interest`.
+
+Минимальная настройка Mac mini:
+
+1. Установите Xcode, откройте его один раз и примите license agreements.
+2. Установите Homebrew и Ruby Bundler, если их ещё нет.
+3. В GitHub откройте `Settings → Actions → Runners → New self-hosted runner` и выполните команды установки для macOS.
+4. При конфигурации runner-а добавьте labels `self-hosted`, `macOS`, `personal` и `compound-interest`.
+5. Запустите runner как сервис, чтобы CI переживал перезагрузку Mac mini.
+
+Настройки репозитория для CI:
+
+- `Secrets → Actions → APPLE_TEAM_ID` — Apple Developer Team ID.
+- `Variables → Actions → BUNDLE_ID` — bundle id, если нужно переопределить `ru.kostyuchenko.compoundInterest`.
+
+По умолчанию workflow использует `/Applications/Xcode.app`. Если Xcode установлен в другом месте, поменяйте `XCODE_PATH` в `.github/workflows/ci.yml`.
+
 ## Гайдлайны
 
 Перед изменениями полезно прочитать:
@@ -126,6 +161,27 @@ xcodebuild \
 ## Deploy
 
 Fastlane находится в `Scripts/fastlane`.
+
+CI-deploy в TestFlight запускается вручную через GitHub Actions workflow `Deploy TestFlight` (`workflow_dispatch`). Он собирает Release, загружает build в TestFlight, повышает build number до следующего относительно App Store Connect и коммитит изменения версии обратно в текущую ветку. Marketing version повышается patch-ом только если при запуске workflow выбрать `bump_version=true`.
+
+Для GitHub Actions deploy настройте secrets:
+
+- `APPLE_TEAM_ID`
+- `APP_STORE_CONNECT_API_KEY_ID`
+- `APP_STORE_CONNECT_API_ISSUER_ID`
+- `APP_STORE_CONNECT_API_KEY_CONTENT`
+- `MATCH_PASSWORD`
+
+Если `APP_STORE_CONNECT_API_KEY_CONTENT` хранится в base64, добавьте secret `APP_STORE_CONNECT_API_KEY_IS_BASE64=1`.
+
+### Match certificates
+
+Сертификаты и provisioning profiles хранятся в общем private repo `Apple-Certificates`. Для нескольких Apple Developer Teams используется отдельная branch на каждую команду/компанию:
+
+- `personal` — личная Apple Developer Team `Q9WXSNT6UT`;
+- для компаний используйте стабильное имя компании, например `company-acme`.
+
+CI и deploy всегда используют `MATCH_READONLY=true`, чтобы GitHub Actions не создавал и не пересоздавал signing assets. Первичная генерация или обновление сертификатов выполняется вручную с Mac mini через `MATCH_READONLY=false`.
 
 Перед deploy проверьте:
 
