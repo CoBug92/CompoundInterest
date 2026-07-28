@@ -34,7 +34,7 @@ struct PeriodView: View {
             valueSection
         }
         .padding(.all, Margin.x6)
-        .background(Color(.secondarySystemBackground))
+        .background(Color(.Background.modalSecondary))
         .clipShape(.rect(cornerRadius: .cornerRadius, style: .continuous))
         .shadow(radius: .shadowRadius)
     }

@@ -2,6 +2,7 @@
 */Resources/Generated/
 build/
 DerivedData
+.DerivedData
 
 ## Fastlane
 /Scripts/*.ipa

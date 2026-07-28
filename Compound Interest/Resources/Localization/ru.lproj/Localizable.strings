@@ -8,6 +8,11 @@
 "chart.section.title" = "График доходности";
 "chart.title" = "Капитал по времени";
 
+// MARK: - Export
+"export.monthlyIncome.buttonTitle" = "Выгрузить доход по месяцам";
+"export.monthlyIncome.fileName" = "Доход по месяцам.pdf";
+"export.monthlyIncome.title" = "Доход по месяцам";
+
 // MARK: - Main
 "main.calculate.button.title" = "Рассчитать";
 "main.contributionFrequency.monthly.compactTitle" = "Ежемес";

@@ -21,7 +21,7 @@ struct ContributionFrequencyView: View {
             }
         }
         .padding(.all, Margin.x1)
-        .background(Color(.secondarySystemBackground))
+        .background(Color(.Background.modalSecondary))
         .clipShape(.rect(cornerRadius: .cornerRadius, style: .continuous))
     }
 

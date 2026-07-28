@@ -8,6 +8,11 @@
 "chart.section.title" = "Yield chart";
 "chart.title" = "Capital over time";
 
+// MARK: - Export
+"export.monthlyIncome.buttonTitle" = "Export monthly income";
+"export.monthlyIncome.fileName" = "Monthly income.pdf";
+"export.monthlyIncome.title" = "Monthly income";
+
 // MARK: - Main
 "main.calculate.button.title" = "Calculate";
 "main.contributionFrequency.monthly.compactTitle" = "Monthly";

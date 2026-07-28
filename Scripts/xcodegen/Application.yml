@@ -46,7 +46,6 @@ targetTemplates:
         LSApplicationQueriesSchemes:
           - fbapi
           - fb-messenger-share-api
-        UIUserInterfaceStyle: Light
         CFBundleDisplayName: $(BUNDLE_DISPLAY_NAME)
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait

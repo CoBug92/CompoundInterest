@@ -1,6 +1,5 @@
 import Charts
 import SwiftUI
-import UIKit
 
 struct ChartView: View {
 
@@ -33,9 +32,13 @@ struct ChartView: View {
 
 struct MonthlyCapitalChartView: View {
 
+    // MARK: - Typealias
+
+    typealias MonthlyCapital = KeyIndicatorResult.MonthlyCapital
+
     // MARK: - Properties
 
-    private let monthlyCapital: [KeyIndicatorResult.MonthlyCapital]
+    private let monthlyCapital: [MonthlyCapital]
     private let showsTitle: Bool
     private let height: CGFloat
     private let formatter = DecimalTextFormatter()
@@ -46,7 +49,7 @@ struct MonthlyCapitalChartView: View {
 
     // MARK: - Computed properties
 
-    private var selectedMonthlyCapital: KeyIndicatorResult.MonthlyCapital? {
+    private var selectedMonthlyCapital: MonthlyCapital? {
         guard let selectedMonth else {
             return nil
         }
@@ -59,7 +62,7 @@ struct MonthlyCapitalChartView: View {
     // MARK: - Init/Deinit
 
     init(
-        monthlyCapital: [KeyIndicatorResult.MonthlyCapital],
+        monthlyCapital: [MonthlyCapital],
         showsTitle: Bool,
         height: CGFloat
     ) {
@@ -89,51 +92,11 @@ struct MonthlyCapitalChartView: View {
 
     private var chartView: some View {
         Chart {
-            ForEach(monthlyCapital) { item in
-                LineMark(
-                    x: .value(Localizations.Chart.Month.axis, item.month),
-                    y: .value(Localizations.Chart.Capital.axis, item.capital.doubleValue)
-                )
-            }
-
-            if let selectedMonthlyCapital {
-                RuleMark(x: .value(Localizations.Chart.Month.axis, selectedMonthlyCapital.month))
-                    .foregroundStyle(Color(.Text.comment))
-                    .lineStyle(.init(lineWidth: .selectionLineWidth, dash: [.selectionLineDash]))
-
-                PointMark(
-                    x: .value(Localizations.Chart.Month.axis, selectedMonthlyCapital.month),
-                    y: .value(Localizations.Chart.Capital.axis, selectedMonthlyCapital.capital.doubleValue)
-                )
-                .foregroundStyle(Color(.Text.green))
-                .symbolSize(.selectedPointSize)
-            }
+            lineMarks
+            selectionMarks
         }
-        .chartXAxis {
-            AxisMarks(position: .bottom, values: .automatic(desiredCount: .axisMarksCount)) { value in
-                AxisGridLine()
-                AxisTick()
-
-                if let month = value.as(Int.self) {
-                    AxisValueLabel {
-                        Text(verbatim: String(month))
-                    }
-                }
-            }
-        }
-        .chartYAxis {
-            AxisMarks(position: .leading, values: .automatic(desiredCount: .axisMarksCount)) { value in
-                AxisGridLine()
-                AxisTick()
-
-                if let capital = value.as(Double.self) {
-                    AxisValueLabel {
-                        Text(verbatim: formattedCapital(capital))
-                            .font(.caption2)
-                    }
-                }
-            }
-        }
+        .chartXAxis { xAxisContent }
+        .chartYAxis { yAxisContent }
         .chartXAxisLabel(position: .bottom, alignment: .center) {
             Text(verbatim: Localizations.Chart.Month.axis)
         }
@@ -146,6 +109,65 @@ struct MonthlyCapitalChartView: View {
                     proxy: proxy,
                     geometry: geometry
                 )
+            }
+        }
+    }
+
+    private var lineMarks: some ChartContent {
+        ForEach(monthlyCapital) { item in
+            LineMark(
+                x: .value(Localizations.Chart.Month.axis, item.month),
+                y: .value(Localizations.Chart.Capital.axis, item.capital.doubleValue)
+            )
+        }
+    }
+
+    @ChartContentBuilder
+    private var selectionMarks: some ChartContent {
+        if let selectedMonthlyCapital {
+            RuleMark(x: .value(Localizations.Chart.Month.axis, selectedMonthlyCapital.month))
+                .foregroundStyle(Color(.Text.comment))
+                .lineStyle(selectionLineStyle)
+
+            PointMark(
+                x: .value(Localizations.Chart.Month.axis, selectedMonthlyCapital.month),
+                y: .value(Localizations.Chart.Capital.axis, selectedMonthlyCapital.capital.doubleValue)
+            )
+            .foregroundStyle(Color(.Text.green))
+            .symbolSize(.selectedPointSize)
+        }
+    }
+
+    private var selectionLineStyle: StrokeStyle {
+        StrokeStyle(
+            lineWidth: .selectionLineWidth,
+            dash: [.selectionLineDash]
+        )
+    }
+
+    private var xAxisContent: some AxisContent {
+        AxisMarks(position: .bottom, values: .automatic(desiredCount: .axisMarksCount)) { value in
+            AxisGridLine()
+            AxisTick()
+
+            if let month = value.as(Int.self) {
+                AxisValueLabel {
+                    Text(verbatim: String(month))
+                }
+            }
+        }
+    }
+
+    private var yAxisContent: some AxisContent {
+        AxisMarks(position: .leading, values: .automatic(desiredCount: .axisMarksCount)) { value in
+            AxisGridLine()
+            AxisTick()
+
+            if let capital = value.as(Double.self) {
+                AxisValueLabel {
+                    Text(verbatim: formattedCapital(capital))
+                        .font(.caption2)
+                }
             }
         }
     }
@@ -188,7 +210,7 @@ struct MonthlyCapitalChartView: View {
         }
     }
 
-    private func tooltipView(for item: KeyIndicatorResult.MonthlyCapital) -> some View {
+    private func tooltipView(for item: MonthlyCapital) -> some View {
         VStack(alignment: .leading, spacing: Margin.x1) {
             Text(verbatim: Localizations.Chart.Selected.month(item.month))
                 .font(AppFont.caption)
@@ -201,7 +223,7 @@ struct MonthlyCapitalChartView: View {
         .frame(width: .tooltipWidth, alignment: .leading)
         .padding(.horizontal, Margin.x3)
         .padding(.vertical, Margin.x2)
-        .background(Color(.secondarySystemBackground))
+        .background(Color(.Background.modalPrimary))
         .clipShape(.rect(cornerRadius: .tooltipCornerRadius, style: .continuous))
         .shadow(radius: .tooltipShadowRadius)
     }
@@ -215,8 +237,7 @@ struct MonthlyCapitalChartView: View {
     ) {
         guard
             let plotFrameAnchor = proxy.plotFrame,
-            let firstMonth = monthlyCapital.first?.month,
-            let lastMonth = monthlyCapital.last?.month
+            let monthRange = monthlyCapital.monthRange
         else {
             return
         }
@@ -228,7 +249,7 @@ struct MonthlyCapitalChartView: View {
             return
         }
 
-        let month = min(max(rawMonth, firstMonth), lastMonth)
+        let month = rawMonth.clamped(to: monthRange)
 
         guard selectedMonth != month else {
             return
@@ -242,7 +263,7 @@ struct MonthlyCapitalChartView: View {
     }
 
     private func tooltipPosition(
-        for item: KeyIndicatorResult.MonthlyCapital,
+        for item: MonthlyCapital,
         proxy: ChartProxy,
         geometry: GeometryProxy
     ) -> CGPoint {
@@ -257,20 +278,26 @@ struct MonthlyCapitalChartView: View {
         let plotFrame = geometry[plotFrameAnchor]
         let xCoordinate = plotFrame.origin.x + xPosition
         let yCoordinate = plotFrame.origin.y + yPosition - .tooltipVerticalOffset
-        let tooltipHalfWidth = min(.tooltipWidth / 2, plotFrame.width / 2)
-        let tooltipHalfHeight = min(.tooltipHeight / 2, plotFrame.height / 2)
+        let tooltipHalfSize = tooltipHalfSize(in: plotFrame)
 
         return CGPoint(
             x: clamped(
                 xCoordinate,
-                lowerBound: plotFrame.minX + tooltipHalfWidth,
-                upperBound: plotFrame.maxX - tooltipHalfWidth
+                lowerBound: plotFrame.minX + tooltipHalfSize.width,
+                upperBound: plotFrame.maxX - tooltipHalfSize.width
             ),
             y: clamped(
                 yCoordinate,
-                lowerBound: plotFrame.minY + tooltipHalfHeight,
-                upperBound: plotFrame.maxY - tooltipHalfHeight
+                lowerBound: plotFrame.minY + tooltipHalfSize.height,
+                upperBound: plotFrame.maxY - tooltipHalfSize.height
             )
+        )
+    }
+
+    private func tooltipHalfSize(in plotFrame: CGRect) -> CGSize {
+        CGSize(
+            width: min(.tooltipWidth / 2, plotFrame.width / 2),
+            height: min(.tooltipHeight / 2, plotFrame.height / 2)
         )
     }
 
@@ -287,86 +314,21 @@ struct MonthlyCapitalChartView: View {
     }
 }
 
-private struct ChartSelectionOverlay: UIViewRepresentable {
+private extension Array where Element == KeyIndicatorResult.MonthlyCapital {
 
-    // MARK: - Outputs
+    var monthRange: ClosedRange<Int>? {
+        guard let firstMonth = first?.month, let lastMonth = last?.month else {
+            return nil
+        }
 
-    private let onSelect: (CGPoint) -> Void
-
-    // MARK: - Init/Deinit
-
-    init(onSelect: @escaping (CGPoint) -> Void) {
-        self.onSelect = onSelect
-    }
-
-    // MARK: - Public methods
-
-    func makeUIView(context: Context) -> UIView {
-        let view = UIView()
-        view.backgroundColor = .clear
-
-        let tapGesture = UITapGestureRecognizer(
-            target: context.coordinator,
-            action: #selector(Coordinator.handleTap)
-        )
-
-        let panGesture = UIPanGestureRecognizer(
-            target: context.coordinator,
-            action: #selector(Coordinator.handlePan)
-        )
-        panGesture.delegate = context.coordinator
-
-        view.addGestureRecognizer(tapGesture)
-        view.addGestureRecognizer(panGesture)
-
-        return view
-    }
-
-    func updateUIView(_ view: UIView, context: Context) {
-        context.coordinator.onSelect = onSelect
-    }
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(onSelect: onSelect)
+        return firstMonth...lastMonth
     }
 }
 
-private extension ChartSelectionOverlay {
+private extension Comparable {
 
-    // MARK: - Coordinator
-
-    final class Coordinator: NSObject, UIGestureRecognizerDelegate {
-
-        // MARK: - Outputs
-
-        var onSelect: (CGPoint) -> Void
-
-        // MARK: - Init/Deinit
-
-        init(onSelect: @escaping (CGPoint) -> Void) {
-            self.onSelect = onSelect
-        }
-
-        // MARK: - Public methods
-
-        @objc
-        func handleTap(_ gesture: UITapGestureRecognizer) {
-            onSelect(gesture.location(in: gesture.view))
-        }
-
-        @objc
-        func handlePan(_ gesture: UIPanGestureRecognizer) {
-            onSelect(gesture.location(in: gesture.view))
-        }
-
-        func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-            guard let panGesture = gestureRecognizer as? UIPanGestureRecognizer else {
-                return true
-            }
-
-            let velocity = panGesture.velocity(in: panGesture.view)
-            return abs(velocity.x) > abs(velocity.y)
-        }
+    func clamped(to range: ClosedRange<Self>) -> Self {
+        min(max(self, range.lowerBound), range.upperBound)
     }
 }
 

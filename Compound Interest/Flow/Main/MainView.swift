@@ -20,6 +20,7 @@ struct MainView: View {
                 .padding(.horizontal, Margin.x5)
                 .padding(.top, Margin.x4)
         }
+        .background(Color(.Background.primary))
         .scrollDismissesKeyboard(.interactively)
         .animation(.keyMetricsAppearance, value: viewModel.result)
     }
@@ -103,9 +104,7 @@ struct MainView: View {
 
     private func periodsSection(_ result: KeyIndicatorResult) -> some View {
         LazyVStack(alignment: .leading, spacing: Margin.x4) {
-            Text(verbatim: Localizations.Main.Periods.Section.title)
-                .font(AppFont.headline.bold())
-                .foregroundStyle(Color(.Text.primary))
+            periodsHeader(result)
 
             ForEach(result.monthlyCapital) { monthlyCapital in
                 PeriodView(
@@ -115,6 +114,27 @@ struct MainView: View {
             }
         }
         .padding(.vertical, Margin.x3)
+    }
+
+    private func periodsHeader(_ result: KeyIndicatorResult) -> some View {
+        HStack(spacing: Margin.x4) {
+            Text(verbatim: Localizations.Main.Periods.Section.title)
+                .font(AppFont.headline.bold())
+                .foregroundStyle(Color(.Text.primary))
+
+            Spacer()
+
+            ShareLink(
+                item: MonthlyCapitalPDFDocument(monthlyCapital: result.monthlyCapital),
+                preview: SharePreview(Localizations.Export.MonthlyIncome.fileName)
+            ) {
+                Image(systemName: SFSymbols.squareAndArrowUp)
+                    .font(AppFont.body.bold())
+                    .foregroundStyle(Color(.Text.primary))
+                    .padding(.all, Margin.x2)
+            }
+            .accessibilityLabel(Localizations.Export.MonthlyIncome.buttonTitle)
+        }
     }
 
     // MARK: - Private methods
@@ -131,7 +151,6 @@ struct MainView: View {
             return $viewModel.annualInterestRate
         }
     }
-
 }
 
 // MARK: - AnyTransition

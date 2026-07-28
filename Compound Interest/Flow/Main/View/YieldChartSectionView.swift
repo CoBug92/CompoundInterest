@@ -40,7 +40,7 @@ struct YieldChartSectionView: View {
     }
 
     private var cardBackground: some View {
-        Color(.secondarySystemBackground)
+        Color(.Background.modalSecondary)
             .clipShape(.rect(cornerRadius: .cornerRadius, style: .continuous))
             .shadow(radius: .shadowRadius)
     }

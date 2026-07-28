@@ -31,7 +31,7 @@ struct KeyMetricsView: View {
             metricsList
         }
         .background(
-            Color(.secondarySystemBackground)
+            Color(.Background.modalSecondary)
                 .clipShape(.rect(cornerRadius: .cornerRadius, style: .continuous))
                 .shadow(radius: .shadowRadius)
         )
