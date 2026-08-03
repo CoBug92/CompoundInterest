@@ -1,7 +1,7 @@
 name = "verifier"
 description = "Независимый проверяющий результата для задач среднего и высокого риска. Запускает релевантные сборки, тесты, lint и поведенческие сценарии, сопоставляет результат с критериями приёмки и возвращает доказательства без исправления кода."
 model = "gpt-5.6-terra"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "low"
 sandbox_mode = "workspace-write"
 
 developer_instructions = """

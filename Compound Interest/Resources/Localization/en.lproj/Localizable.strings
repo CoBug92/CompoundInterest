@@ -8,6 +8,11 @@
 "chart.section.title" = "Yield chart";
 "chart.title" = "Capital over time";
 
+// MARK: - Common
+"common.cancel.buttonTitle" = "Cancel";
+"common.delete.buttonTitle" = "Delete";
+"common.ok.buttonTitle" = "OK";
+
 // MARK: - Export
 "export.monthlyIncome.buttonTitle" = "Export monthly income";
 "export.monthlyIncome.fileName" = "Monthly income.pdf";
@@ -15,17 +20,29 @@
 
 // MARK: - Main
 "main.calculate.button.title" = "Calculate";
-"main.contributionFrequency.monthly.compactTitle" = "Monthly";
 "main.contributionFrequency.monthly.title" = "Monthly";
-"main.contributionFrequency.none.compactTitle" = "None";
 "main.contributionFrequency.none.title" = "No contributions";
-"main.contributionFrequency.quarterly.compactTitle" = "Quarterly";
 "main.contributionFrequency.quarterly.title" = "Quarterly";
-"main.contributionFrequency.yearly.compactTitle" = "Yearly";
 "main.contributionFrequency.yearly.title" = "Yearly";
 "main.durationUnit.months.title" = "Months";
 "main.durationUnit.years.title" = "Years";
 "main.periods.section.title" = "Income by month";
+
+// MARK: - History
+"history.annualInterestRate.title" = "Annual rate";
+"history.contribution.title" = "Contribution";
+"history.contribution.emptyValue" = "Not entered";
+"history.deleteAll.buttonTitle" = "Delete All";
+"history.deleteAll.confirmation.message" = "Deleted history cannot be restored.";
+"history.deleteAll.confirmation.title" = "Delete all calculations?";
+"history.duration.title" = "Duration";
+"history.empty.message" = "Parameters will appear here after a successful calculation.";
+"history.empty.title" = "No Saved Calculations";
+"history.error.message" = "The calculation history could not be updated.";
+"history.error.title" = "History Error";
+"history.initialInvestment.title" = "Initial investment";
+"history.open.buttonTitle" = "Calculation History";
+"history.title" = "Calculation History";
 
 // MARK: - Main Parameter
 "main.parameter.annualInterestRate.hint" = "Expected annual return.";

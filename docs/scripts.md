@@ -4,7 +4,7 @@
 
 ## Общая идея
 
-`Scripts` содержит инфраструктуру шаблона: первичную настройку проекта, генерацию ресурсов, генерацию `.xcodeproj`, SwiftLint-конфигурацию, Fastlane deploy и шаблоны Xcode. Основной пользовательский сценарий — заполнить `Scripts/project.env` и запустить `Scripts/bootstrap.sh` или `Scripts/generate.sh`.
+`Scripts` содержит инфраструктуру первичной настройки проекта, генерации ресурсов и `.xcodeproj`, SwiftLint и Fastlane deploy. Основной пользовательский сценарий — проверить `Scripts/project.env`, при его отсутствии создать файл из `Scripts/project.env.example`, а затем запустить `Scripts/bootstrap.sh` или `Scripts/generate.sh`.
 
 ## Структура
 
@@ -17,36 +17,30 @@ Scripts/
   fastlane/
   swiftgen/
   swiftlint/
-  templates/
   xcodegen/
 ```
 
-`Scripts/project.env` — локальный файл с настройками конкретного приложения. Он не должен храниться в template-репозитории, если содержит реальные идентификаторы, team id или SDK-токены.
+`Scripts/project.env` содержит настройки конкретного приложения. Его можно передавать и хранить в репозитории, если команде нужны общие значения. Секреты следует хранить отдельно — например, в GitHub Secrets или `Scripts/fastlane/.env`.
 
 ## Environment
 
 `Scripts/project.env.example` содержит пример обязательных переменных:
 
 ```sh
-PROJECT_NAME=AppName
-APP_DISPLAY_NAME=AppName
-TARGET_NAME=AppName
-TEAM_ID=TEAM_ID
-BUNDLE_ID=com.company-name.template
-
-FACEBOOK_APP_ID=FACEBOOK_APP_ID
-FACEBOOK_CLIENT_TOKEN=FACEBOOK_CLIENT_TOKEN
-FACEBOOK_URL_SCHEME=fbFACEBOOK_APP_ID
+PROJECT_NAME="Compound Interest"
+APP_DISPLAY_NAME="Сложный процент"
+TARGET_NAME=CompoundInterest
+TEAM_ID=YOUR_APPLE_TEAM_ID
+BUNDLE_ID=ru.kostyuchenko.compoundInterest
 ```
 
 Назначение переменных:
 
 - `PROJECT_NAME` — имя директории приложения и `.xcodeproj`.
 - `APP_DISPLAY_NAME` — отображаемое имя приложения.
-- `TARGET_NAME` — имя единственного app target и основной scheme.
+- `TARGET_NAME` — имя app target и основной scheme.
 - `TEAM_ID` — Apple Developer Team ID.
 - `BUNDLE_ID` — bundle identifier приложения.
-- `FACEBOOK_*` — значения для Facebook SDK в `Info.plist`.
 
 ## Entrypoints
 
@@ -97,12 +91,14 @@ cd Scripts
 - `Application.yml` — app target, build settings, Info.plist values, scripts и dependencies;
 - `xcodegen.sh` — безопасный wrapper вокруг `xcodegen`.
 
-Проект генерирует один app target:
+Проект генерирует app target и target модульных тестов:
 
 ```yaml
 targets:
   ${TARGET_NAME}:
     templates: [CommonTarget]
+  UnitTests:
+    type: bundle.unit-test
 ```
 
 Проект не генерирует `IDETemplateMacros.plist`, поэтому новые файлы в Xcode создаются без автоматической шапки и начинаются сразу с кода.
@@ -145,10 +141,6 @@ Scripts/swiftlint/swiftlint.sh
 
 Если нужно сделать SwiftLint строго блокирующим для CI, это лучше вынести в отдельный CI-only режим, а не менять поведение Xcode build phase.
 
-## Templates
-
-`Scripts/templates` зарезервирована для файлов, которые могут понадобиться генерации проекта. Сейчас папка не используется.
-
 ## Fastlane
 
 Fastlane находится в `Scripts/fastlane`:
@@ -166,23 +158,24 @@ Deploy lane использует:
 - App Store Connect API key переменные;
 - `MATCH_PASSWORD` и keychain password.
 
+`APP_STORE_CONNECT_API_KEY_CONTENT` всегда должен быть закодирован в base64: Fastlane вызывает `app_store_connect_api_key` с `is_key_content_base64: true`.
+
 Перед реальным deploy нужно проверить `Matchfile`, CI secrets и значения в `Scripts/project.env`.
 
-## CI
+## CI и deploy
 
-GitHub Actions workflow использует скрипты из `Scripts` напрямую:
+Локальный `Scripts/ci.sh` запускает `bundle exec fastlane ios ci`. Lane выполняет:
 
-- `Scripts/swiftgen/swiftgen.sh` для ресурсов;
-- `Scripts/xcodegen/xcodegen.sh` для `.xcodeproj`;
-- `Scripts/swiftlint/swiftlint.sh` для SwiftLint;
-- `bundle exec fastlane deploy_to_tf` из `Scripts/fastlane`.
+- генерацию ресурсов и `.xcodeproj` через `Scripts/generate.sh`;
+- SwiftLint в строгом режиме;
+- чистую неподписанную Debug-сборку.
 
-CI ожидает, что `Scripts/project.env` уже создан из секретов или хранится в проекте осознанно.
+GitHub Actions workflow `.github/workflows/deploy-testflight.yml` не вызывает `Scripts/ci.sh`. Он создаёт `Scripts/project.env` из настроек workflow, repository variable и secrets, а затем запускает `bundle exec fastlane ios deploy_to_tf` из `Scripts/fastlane`. Deploy lane синхронизирует signing, собирает Release, загружает сборку в TestFlight и коммитит обновлённую версию.
 
 ## Правила изменения
 
 - Не дублируйте логику генерации в CI, Xcode build phases и локальных командах: лучше обновлять wrapper-скрипты.
-- Если меняется структура проекта, сначала обновите `project.env.example`, затем `generate.sh`, затем XcodeGen spec.
+- Если меняются переменные проекта, согласованно обновляйте `project.env.example`, использующие их скрипты и XcodeGen spec.
 - Если добавляется новый tool config, кладите config и wrapper в отдельную подпапку внутри `Scripts`.
 - После изменений запускайте минимум `Scripts/generate.sh` или соответствующий wrapper напрямую.
 - После изменения XcodeGen проверяйте список target/scheme через `xcodebuild -list -project ${PROJECT_NAME}.xcodeproj`.

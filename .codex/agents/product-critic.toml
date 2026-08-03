@@ -1,7 +1,7 @@
 name = "product_critic"
 description = "Независимый read-only критик значимых продуктовых гипотез и Discovery Brief. Подключать после Product Discovery, когда нужно проверить доказательства, предпосылки, альтернативы и критерии успеха до решения пользователя."
 model = "gpt-5.6-sol"
-model_reasoning_effort = "high"
+model_reasoning_effort = "medium"
 sandbox_mode = "read-only"
 
 developer_instructions = """

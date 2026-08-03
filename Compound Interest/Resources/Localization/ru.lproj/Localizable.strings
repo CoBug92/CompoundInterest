@@ -8,6 +8,11 @@
 "chart.section.title" = "График доходности";
 "chart.title" = "Капитал по времени";
 
+// MARK: - Common
+"common.cancel.buttonTitle" = "Отмена";
+"common.delete.buttonTitle" = "Удалить";
+"common.ok.buttonTitle" = "ОК";
+
 // MARK: - Export
 "export.monthlyIncome.buttonTitle" = "Выгрузить доход по месяцам";
 "export.monthlyIncome.fileName" = "Доход по месяцам.pdf";
@@ -15,17 +20,29 @@
 
 // MARK: - Main
 "main.calculate.button.title" = "Рассчитать";
-"main.contributionFrequency.monthly.compactTitle" = "Ежемес";
 "main.contributionFrequency.monthly.title" = "Ежемесячно";
-"main.contributionFrequency.none.compactTitle" = "Нет";
 "main.contributionFrequency.none.title" = "Без пополнений";
-"main.contributionFrequency.quarterly.compactTitle" = "Ежекв";
 "main.contributionFrequency.quarterly.title" = "Ежеквартально";
-"main.contributionFrequency.yearly.compactTitle" = "Ежегод";
 "main.contributionFrequency.yearly.title" = "Ежегодно";
 "main.durationUnit.months.title" = "Месяцы";
 "main.durationUnit.years.title" = "Годы";
 "main.periods.section.title" = "Доход по месяцам";
+
+// MARK: - History
+"history.annualInterestRate.title" = "Годовая ставка";
+"history.contribution.title" = "Пополнение";
+"history.contribution.emptyValue" = "Не указано";
+"history.deleteAll.buttonTitle" = "Удалить все";
+"history.deleteAll.confirmation.message" = "Восстановить удалённую историю будет невозможно.";
+"history.deleteAll.confirmation.title" = "Удалить все расчёты?";
+"history.duration.title" = "Срок";
+"history.empty.message" = "Здесь появятся параметры после успешного расчёта.";
+"history.empty.title" = "Нет сохранённых расчётов";
+"history.error.message" = "Не удалось обновить историю расчётов.";
+"history.error.title" = "Ошибка истории";
+"history.initialInvestment.title" = "Начальная сумма";
+"history.open.buttonTitle" = "История расчётов";
+"history.title" = "История расчётов";
 
 // MARK: - Main Parameter
 "main.parameter.annualInterestRate.hint" = "Ожидаемая годовая доходность.";
