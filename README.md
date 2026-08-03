@@ -23,54 +23,32 @@ iOS-приложение для расчёта сложного процента
 
 ```text
 Compound Interest/
-├── App/                 # App entry point и root view
-├── Common/              # Общие helpers, extensions и reusable views
-├── Flow/                # Экраны и feature-specific UI
-├── Models/              # Доменные модели расчёта
+├── App/                 # Lifecycle и app entry point
+├── Core/                # Переносимые сервисы
+├── Flows/               # View layer и feature-specific UI
+├── Infrastructure/      # Persistence и доступ к данным
+├── Model/               # Database, Domain и DTO-модели
+├── Common/              # Универсальные reusable-компоненты проекта
 └── Resources/           # Assets, localization, Info.plist
 
-Scripts/
-├── generate.sh          # SwiftGen + XcodeGen
-├── bootstrap.sh         # Установка зависимостей и генерация проекта
-├── swiftgen/            # SwiftGen config и wrapper
-├── swiftlint/           # SwiftLint config и wrapper
-├── xcodegen/            # XcodeGen specs
-└── fastlane/            # TestFlight deploy
-
+UnitTests/                # Тесты, зеркалирующие production-слои
+Scripts/                 # Генерация, lint и release automation
 docs/                    # Проектные правила и документация
 ```
 
 ## Быстрый старт
 
 1. Установите Xcode и command line tools.
-2. Установите зависимости через Homebrew/Bundler:
+2. Проверьте настройки в `Scripts/project.env`. Если файла нет, создайте его из примера и укажите свой Apple Developer Team ID:
+
+```sh
+cp Scripts/project.env.example Scripts/project.env
+```
+
+3. Запустите bootstrap: он установит зависимости через Homebrew/Bundler, сгенерирует ресурсы и Xcode-проект, а затем откроет проект в Xcode:
 
 ```sh
 Scripts/bootstrap.sh
-```
-
-Если bootstrap останавливается из-за отсутствующего `Scripts/project.env.example`, создайте локальный `Scripts/project.env` по текущим значениям проекта:
-
-```sh
-cat > Scripts/project.env <<'ENV'
-PROJECT_NAME="Compound Interest"
-APP_DISPLAY_NAME="Сложный процент"
-TARGET_NAME=CompoundInterest
-TEAM_ID=<your-team-id>
-BUNDLE_ID=ru.kostyuchenko.compoundInterest
-ENV
-```
-
-3. Сгенерируйте ресурсы и Xcode-проект:
-
-```sh
-Scripts/generate.sh
-```
-
-4. Откройте проект:
-
-```sh
-open "Compound Interest.xcodeproj"
 ```
 
 ## Разработка
@@ -90,7 +68,7 @@ Scripts/swiftlint/swiftlint.sh
 Точечная проверка изменённого файла:
 
 ```sh
-swiftlint lint --config Scripts/swiftlint/.swiftlint.yml --no-cache "Compound Interest/Flow/Main/View/MainParameterInputView.swift"
+swiftlint lint --config Scripts/swiftlint/.swiftlint.yml --no-cache "Compound Interest/Flows/Main/Views/MainParameterInputView.swift"
 ```
 
 Проверка сборки без подписи:
@@ -108,21 +86,24 @@ xcodebuild \
 
 ## CI на Mac mini
 
-Рекомендуемый минимальный вариант — GitHub Actions self-hosted runner на Mac mini. В репозитории уже есть workflow `.github/workflows/ci.yml`, который запускается на `push`, `pull_request` и вручную через `workflow_dispatch`.
+Рекомендуемый минимальный вариант — GitHub Actions self-hosted runner на Mac mini. В репозитории используется workflow `.github/workflows/deploy-testflight.yml`: он запускается при каждом `push` в `master` и вручную через `workflow_dispatch`.
 
-Локально тот же набор проверок запускается командой:
+Локальная проверка запускается командой:
 
 ```sh
 Scripts/ci.sh
 ```
 
-Что делает CI:
+Она генерирует ресурсы и Xcode-проект, запускает SwiftLint в строгом режиме и выполняет неподписанную Debug-сборку. Команда не синхронизирует signing, не загружает сборку в TestFlight и не изменяет версию.
 
-- устанавливает зависимости из `Brewfile` и `Gemfile`;
+GitHub Actions workflow выполняет deploy-процесс отдельно:
+
+- устанавливает нужные Homebrew-зависимости и Ruby gems из `Gemfile`;
 - создаёт локальный `Scripts/project.env` для runner-а;
-- запускает SwiftGen/XcodeGen;
-- запускает SwiftLint;
-- собирает `CompoundInterest` в `Debug` под `iphoneos` без code signing.
+- синхронизирует signing через Fastlane Match в readonly-режиме;
+- собирает `CompoundInterest` в `Release`;
+- загружает новую сборку в TestFlight;
+- коммитит обновлённый build number обратно в `master` с `[skip ci]`, чтобы не запускать pipeline по кругу.
 
 На Mac mini нужно один раз установить GitHub Actions runner и добавить ему labels `self-hosted`, `macOS`, `personal` и `compound-interest`.
 
@@ -139,7 +120,7 @@ Scripts/ci.sh
 - `Secrets → Actions → APPLE_TEAM_ID` — Apple Developer Team ID.
 - `Variables → Actions → BUNDLE_ID` — bundle id, если нужно переопределить `ru.kostyuchenko.compoundInterest`.
 
-По умолчанию workflow использует `/Applications/Xcode.app`. Если Xcode установлен в другом месте, поменяйте `XCODE_PATH` в `.github/workflows/ci.yml`.
+По умолчанию workflow использует `/Applications/Xcode.app`. Если Xcode установлен в другом месте, поменяйте `XCODE_PATH` в `.github/workflows/deploy-testflight.yml`.
 
 ## Гайдлайны
 
@@ -162,7 +143,7 @@ Scripts/ci.sh
 
 Fastlane находится в `Scripts/fastlane`.
 
-CI-deploy в TestFlight запускается вручную через GitHub Actions workflow `Deploy TestFlight` (`workflow_dispatch`). Он собирает Release, загружает build в TestFlight, повышает build number до следующего относительно App Store Connect и коммитит изменения версии обратно в текущую ветку. Marketing version повышается patch-ом только если при запуске workflow выбрать `bump_version=true`.
+Deploy в TestFlight выполняет GitHub Actions workflow `Build and Deploy`. Он автоматически запускается при каждом `push` в `master`, собирает Release, загружает build в TestFlight, повышает build number до следующего относительно App Store Connect и коммитит изменение версии обратно в `master`. Ручной запуск через `workflow_dispatch` тоже доступен; marketing version повышается patch-ом только если выбрать `bump_version=true`.
 
 Для GitHub Actions deploy настройте secrets:
 
@@ -172,7 +153,7 @@ CI-deploy в TestFlight запускается вручную через GitHub 
 - `APP_STORE_CONNECT_API_KEY_CONTENT`
 - `MATCH_PASSWORD`
 
-Если `APP_STORE_CONNECT_API_KEY_CONTENT` хранится в base64, добавьте secret `APP_STORE_CONNECT_API_KEY_IS_BASE64=1`.
+`APP_STORE_CONNECT_API_KEY_CONTENT` должен содержать ключ в base64: Fastlane всегда интерпретирует это значение как base64-контент.
 
 ### Match certificates
 
@@ -193,5 +174,5 @@ CI и deploy всегда используют `MATCH_READONLY=true`, чтобы
 Запуск lane выполняется из папки `Scripts/fastlane`:
 
 ```sh
-bundle exec fastlane deploy_to_tf
+bundle exec fastlane ios deploy_to_tf
 ```

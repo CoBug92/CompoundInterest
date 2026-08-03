@@ -1,6 +1,9 @@
-name: Deploy TestFlight
+name: Build and Deploy
 
 on:
+  push:
+    branches:
+      - master
   workflow_dispatch:
     inputs:
       bump_version:
@@ -13,7 +16,7 @@ on:
           - 'true'
 
 concurrency:
-  group: deploy-testflight-${{ github.ref }}
+  group: build-and-deploy-${{ github.ref }}
   cancel-in-progress: false
 
 permissions:
@@ -21,7 +24,7 @@ permissions:
 
 jobs:
   deploy:
-    name: TestFlight deploy
+    name: Build and upload to TestFlight
     runs-on:
       - self-hosted
       - macOS
@@ -36,7 +39,6 @@ jobs:
       APP_STORE_CONNECT_API_KEY_ID: ${{ secrets.APP_STORE_CONNECT_API_KEY_ID }}
       APP_STORE_CONNECT_API_ISSUER_ID: ${{ secrets.APP_STORE_CONNECT_API_ISSUER_ID }}
       APP_STORE_CONNECT_API_KEY_CONTENT: ${{ secrets.APP_STORE_CONNECT_API_KEY_CONTENT }}
-      APP_STORE_CONNECT_API_KEY_IS_BASE64: ${{ secrets.APP_STORE_CONNECT_API_KEY_IS_BASE64 }}
       MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
       MATCH_READONLY: true
 
@@ -76,11 +78,11 @@ jobs:
             echo "Missing required variable BUNDLE_ID"
             exit 1
           fi
-          cat > Scripts/project.env <<'ENV'
-          PROJECT_NAME="Compound Interest"
-          APP_DISPLAY_NAME="Сложный процент"
-          TARGET_NAME=CompoundInterest
-          ENV
+          {
+            printf '%s\n' 'PROJECT_NAME="Compound Interest"'
+            printf '%s\n' 'APP_DISPLAY_NAME="Сложный процент"'
+            printf '%s\n' 'TARGET_NAME=CompoundInterest'
+          } > Scripts/project.env
           printf 'TEAM_ID=%s\n' "$TEAM_ID" >> Scripts/project.env
           printf 'BUNDLE_ID=%s\n' "$BUNDLE_ID" >> Scripts/project.env
 
@@ -92,4 +94,4 @@ jobs:
       - name: Deploy to TestFlight
         run: |
           cd Scripts/fastlane
-          bundle exec fastlane ios deploy_to_tf bump_version:${{ inputs.bump_version }}
+          bundle exec fastlane ios deploy_to_tf bump_version:${{ inputs.bump_version || 'false' }}

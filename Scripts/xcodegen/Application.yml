@@ -10,6 +10,8 @@ targetTemplates:
       commandLineArguments:
         '-FIRDebugDisabled': true
         '-FIRDebugEnabled': false
+      testTargets:
+        - UnitTests
     settings:
       groups: [CommonSettings]
       base:
@@ -131,3 +133,16 @@ settingGroups:
 targets:
   ${TARGET_NAME}:
     templates: [CommonTarget]
+
+  UnitTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: ../../UnitTests
+    dependencies:
+      - target: ${TARGET_NAME}
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: ${BUNDLE_ID}.tests
+        SWIFT_VERSION: 5.0

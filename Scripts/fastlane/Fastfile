@@ -169,7 +169,7 @@ platform :ios do
     git_add(path: version_paths)
     git_commit(
       path: version_paths,
-      message: 'Bump version and build number',
+      message: 'Bump version and build number [skip ci]',
       allow_nothing_to_commit: true
     )
     push_to_git_remote(
