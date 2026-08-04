@@ -41,8 +41,8 @@ targetTemplates:
       path: ../../${PROJECT_NAME}/Resources/Plist/Info.plist
       properties:
         CFBundlePackageType: $(PRODUCT_BUNDLE_PACKAGE_TYPE)
-        CFBundleShortVersionString: '3.0.0'
-        CFBundleVersion: '4'
+        CFBundleShortVersionString: '3.0.1'
+        CFBundleVersion: '5'
         UILaunchStoryboardName: LaunchScreen.storyboard
         ITSAppUsesNonExemptEncryption: NO
         CFBundleDisplayName: $(BUNDLE_DISPLAY_NAME)
@@ -78,8 +78,8 @@ settingGroups:
     CODE_SIGN_STYLE: Manual
     ENABLE_HARDENED_RUNTIME: YES
     # Versioning
-    CURRENT_PROJECT_VERSION: 4
-    MARKETING_VERSION: 3.0.0
+    CURRENT_PROJECT_VERSION: 5
+    MARKETING_VERSION: 3.0.1
     # Asset Catalog Compiler - Options
     ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS: YES
@@ -92,7 +92,7 @@ settingGroups:
     SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD: NO
     TARGETED_DEVICE_FAMILY: 1
     # Info.plist Values
-    INFOPLIST_KEY_CFBundleVersion: 4
+    INFOPLIST_KEY_CFBundleVersion: 5
     INFOPLIST_KEY_CFBundleDisplayName: ${APP_DISPLAY_NAME}
     INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]: YES
     INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]: YES
