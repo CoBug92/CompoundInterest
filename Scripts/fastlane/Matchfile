@@ -1,4 +1,4 @@
-git_url("git@github.com:SE-Kostyuchenko/Apple-Certificates.git")
+git_url("git@github.com:433/SE-Kostyuchenko/Apple-Certificates.git")
 storage_mode("git")
 git_branch("personal")
 type("appstore")

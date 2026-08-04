@@ -104,7 +104,10 @@ struct MainParametersView: View {
     @Previewable @FocusState var focusedParameter: MainParameter?
 
     MainParametersView(
-        viewModel: MainViewModel(),
+        viewModel: MainViewModel(
+            historyRepository: InMemoryHistoryRepository(),
+            analyticsClient: NoopAnalyticsClient()
+        ),
         focusedParameter: $focusedParameter
     )
     .padding()

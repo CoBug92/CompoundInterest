@@ -137,6 +137,7 @@ struct HistoryView: View {
                         )
                     ]
                 ),
+                analyticsClient: NoopAnalyticsClient(),
                 onSelect: { _ in }
             )
         )

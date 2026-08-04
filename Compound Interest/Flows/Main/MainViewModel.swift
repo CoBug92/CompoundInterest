@@ -21,18 +21,19 @@ final class MainViewModel: ObservableObject {
     // MARK: - Properties
 
     private let historyRepository: any HistoryRepository
+    private let analyticsClient: any AnalyticsClient
 
     // MARK: - Init/Deinit
 
-    init(historyRepository: any HistoryRepository) {
+    init(
+        historyRepository: any HistoryRepository,
+        analyticsClient: any AnalyticsClient
+    ) {
         self.historyRepository = historyRepository
+        self.analyticsClient = analyticsClient
         if !historyRepository.isHistoryAvailable {
             historyErrorMessage = Localizations.History.Error.message
         }
-    }
-
-    convenience init() {
-        self.init(historyRepository: InMemoryHistoryRepository())
     }
 
     // MARK: - Computed properties
@@ -57,13 +58,18 @@ final class MainViewModel: ObservableObject {
     // MARK: - Public methods
 
     func calculateResult() {
-        guard let input = makeInput() else {
+        switch makeInput() {
+        case .missingRequiredInput:
+            analyticsClient.track(.calculationAttempted(outcome: .missingRequiredInput))
             result = nil
-            return
+        case .invalidDuration:
+            analyticsClient.track(.calculationAttempted(outcome: .invalidDuration))
+            result = nil
+        case let .valid(input):
+            analyticsClient.track(.calculationAttempted(outcome: .completed))
+            result = calculateResult(for: input)
+            saveToHistory(input)
         }
-
-        result = calculateResult(for: input)
-        saveToHistory(input)
     }
 
     func applyHistoryEntry(_ entry: HistoryEntry) {
@@ -83,30 +89,42 @@ final class MainViewModel: ObservableObject {
     func makeHistoryViewModel() -> HistoryViewModel {
         HistoryViewModel(
             historyRepository: historyRepository,
+            analyticsClient: analyticsClient,
             onSelect: applyHistoryEntry
         )
     }
 
+    func openHistory() {
+        analyticsClient.track(.historyOpened)
+    }
+
+    func startResultExport() {
+        analyticsClient.track(.resultExportStarted)
+    }
+
     // MARK: - Private methods
 
-    private func makeInput() -> CalculationInput? {
+    private func makeInput() -> CalculationInputState {
         guard
             let initialInvestment,
             let investmentDuration,
-            investmentDuration > .zero,
             let annualInterestRate
         else {
-            return nil
+            return .missingRequiredInput
         }
 
-        return CalculationInput(
+        guard investmentDuration > .zero else {
+            return .invalidDuration
+        }
+
+        return .valid(CalculationInput(
             initialInvestment: initialInvestment,
             monthlyContribution: monthlyContribution,
             contributionFrequency: contributionFrequency,
             investmentDuration: investmentDuration,
             investmentDurationUnit: investmentDurationUnit,
             annualInterestRate: annualInterestRate
-        )
+        ))
     }
 
     private func calculateResult(for input: CalculationInput) -> KeyIndicatorResult {
@@ -187,6 +205,12 @@ final class MainViewModel: ObservableObject {
             historyErrorMessage = Localizations.History.Error.message
         }
     }
+}
+
+private enum CalculationInputState {
+    case missingRequiredInput
+    case invalidDuration
+    case valid(CalculationInput)
 }
 
 // MARK: - Constants

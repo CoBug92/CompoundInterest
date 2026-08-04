@@ -2,48 +2,37 @@
 import XCTest
 
 @MainActor
-final class HistoryViewModelTests: XCTestCase {
+final class HistoryViewModelAnalyticsTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testInitializationLoadsRepositoryEntries() {
+    func testSelectingExistingEntryTracksReuseAfterForwardingEntry() {
         let entry = makeEntry()
-        let viewModel = HistoryViewModel(
-            historyRepository: InMemoryHistoryRepository(entries: [entry]),
-            analyticsClient: AnalyticsClientSpy(),
-            onSelect: { _ in }
-        )
-
-        XCTAssertEqual(viewModel.rows.map(\.id), [entry.id])
-    }
-
-    func testSelectionReturnsMatchingEntry() {
-        let entry = makeEntry()
+        let analyticsClient = AnalyticsClientSpy()
         var selectedEntry: HistoryEntry?
         let viewModel = HistoryViewModel(
             historyRepository: InMemoryHistoryRepository(entries: [entry]),
-            analyticsClient: AnalyticsClientSpy(),
+            analyticsClient: analyticsClient,
             onSelect: { selectedEntry = $0 }
         )
 
         viewModel.select(id: entry.id)
 
         XCTAssertEqual(selectedEntry?.id, entry.id)
+        XCTAssertEqual(analyticsClient.trackedEvents, [.historyEntryReused])
     }
 
-    func testDeletingEntryReloadsRows() throws {
-        let entry = makeEntry()
-        let repository = InMemoryHistoryRepository(entries: [entry])
+    func testSelectingUnknownEntryDoesNotTrackReuse() {
+        let analyticsClient = AnalyticsClientSpy()
         let viewModel = HistoryViewModel(
-            historyRepository: repository,
-            analyticsClient: AnalyticsClientSpy(),
+            historyRepository: InMemoryHistoryRepository(),
+            analyticsClient: analyticsClient,
             onSelect: { _ in }
         )
 
-        viewModel.delete(id: entry.id)
+        viewModel.select(id: UUID())
 
-        XCTAssertTrue(viewModel.rows.isEmpty)
-        XCTAssertTrue(try repository.loadAll().isEmpty)
+        XCTAssertTrue(analyticsClient.trackedEvents.isEmpty)
     }
 
     // MARK: - Private methods
@@ -56,7 +45,7 @@ final class HistoryViewModelTests: XCTestCase {
             calculatedDay: HistoryDay(date: date, calendar: .history),
             input: CalculationInput(
                 initialInvestment: 100_000,
-                monthlyContribution: 10_000,
+                monthlyContribution: nil,
                 contributionFrequency: .monthly,
                 investmentDuration: 10,
                 investmentDurationUnit: .years,

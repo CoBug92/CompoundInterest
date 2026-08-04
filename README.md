@@ -130,6 +130,7 @@ GitHub Actions workflow выполняет deploy-процесс отдельн�
 - `docs/swift-style.md` — стиль Swift-кода.
 - `docs/swiftlint-rules.md` — текущая политика SwiftLint.
 - `docs/scripts.md` — устройство скриптов генерации, lint и deploy.
+- `docs/analytics.md` — контракт событий, privacy-ограничения и настройка Firebase.
 
 Ключевые правила:
 

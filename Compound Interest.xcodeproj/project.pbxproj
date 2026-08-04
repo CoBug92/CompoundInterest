@@ -15,14 +15,18 @@
 		27E208DA60E9DA9E9FF3F54F /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEFB2813A33E6BD0C73902B3 /* GradientButton.swift */; };
 		2F920FF8A233929D7F01CD30 /* HistoryStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CD9BD0E8A5CD7FA0EB4DC08 /* HistoryStoreTests.swift */; };
 		3220E65D8B3F90F9AB71E7B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF086DBAF4E729180A8D5996 /* Preview Assets.xcassets */; };
+		33065FE15E2908BFE2F35184 /* NoopAnalyticsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C8AB7451731B2748A0C084 /* NoopAnalyticsClient.swift */; };
 		33CB65A4AA258439D25728BF /* YieldChartSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A409C86F25C908A064DB1E7 /* YieldChartSectionView.swift */; };
 		3450079D926B96B84F0254FD /* KeyIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF831837A5470DE6B58DE5F1 /* KeyIndicator.swift */; };
 		3D381044375735259ECEC29F /* HistoryDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF3175386403EE81D7D088C /* HistoryDay.swift */; };
+		42CE260332A1BA2763F9A0DB /* AnalyticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F25054B9EB4A634E4403B43 /* AnalyticsEvent.swift */; };
 		443430662322B84E97E0CE0A /* MainParametersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7406DD2B70ED28EF31AC11B /* MainParametersView.swift */; };
 		44F511D896074D51F334E6F4 /* HistoryValueRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40CEB331625C352F2F12D44 /* HistoryValueRowView.swift */; };
 		458CA66BF9A6798F746A9EB2 /* MainResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81E449015FA1EE2ADF23043E /* MainResultView.swift */; };
 		492CFBECFD7E53E118A97E74 /* CalculationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78EEE570362ED658C2C63E18 /* CalculationInput.swift */; };
+		49F9D58F06D4A4E87BAFCD7C /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 30EC1B3CC17466DEFA1C886B /* FirebaseAnalyticsCore */; };
 		4CA4BC8A49518D2F9AC3FC49 /* HistoryRowViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D204ED217106326FC4D3A927 /* HistoryRowViewData.swift */; };
+		52604290A9F1AC2BAC4CB32C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5F3F345D7134434972873488 /* GoogleService-Info.plist */; };
 		565B1369328CAA5FD2A9C750 /* KeyMetricRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7F20ECEF24CE8B46C84C9 /* KeyMetricRowView.swift */; };
 		5919CBBB7E59C29570FAD371 /* MonthlyCapitalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9375CAC0998DEF60BF4FEB4B /* MonthlyCapitalListView.swift */; };
 		594BEDA951AA0C2237190D84 /* HistoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672C58D079BC6FE966588893 /* HistoryRowView.swift */; };
@@ -36,23 +40,28 @@
 		7ECE7D046CF9FB63B00BDED5 /* MonthlyCapitalChartTooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D11FF40492A43F9A2A82D14 /* MonthlyCapitalChartTooltipView.swift */; };
 		82622A7456C823F401B1ADF5 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04922522CBE53776088DDAAA /* MainViewModel.swift */; };
 		828C787997F32A0C3E321D95 /* MonthlyCapitalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35E54EF1B4D727C41F64F6C6 /* MonthlyCapitalChartView.swift */; };
+		868BBAF9879D8E22DF85695C /* AnalyticsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFC7800BD5A1A597A3D0B48 /* AnalyticsClient.swift */; };
+		86A5549741EE5E98D1071792 /* FirebaseAnalyticsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A69E5460FF48D5F03512D /* FirebaseAnalyticsClient.swift */; };
 		8E6981FEE4F72209123BDA07 /* Decimal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FB24BEEE798D69E42B5576 /* Decimal.swift */; };
 		8F282C8BFCF29F14E9A7BBD8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865DF4CD5647D3E9D1778E5 /* MainView.swift */; };
 		8F740EED113D852A23726179 /* ApplicationSupportDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15C5BFA2DD97F3588733085 /* ApplicationSupportDirectory.swift */; };
 		9163F43BF5A5EB7385131D31 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78175A6BFA257AE3A64BE3AF /* HistoryViewModel.swift */; };
 		9C13422F33F02418C9C508AD /* DecimalTextFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F158856B9DE7B9C1E097BBA /* DecimalTextFormatter.swift */; };
 		A043F8035D7202960CEB4288 /* KeyMetricsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2714874680E1659A81CFAD5 /* KeyMetricsView.swift */; };
+		A2C7CD180D692123D5BF8ABD /* MainViewModelAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 313F8BFC28CD5B66A03083CF /* MainViewModelAnalyticsTests.swift */; };
 		A384F1CD0BB97218ED7567F0 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20406413FAEFF8055FC4BEF9 /* HistoryView.swift */; };
 		A8410EA9010C77368680774B /* UnavailableHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01161CDBB2F0DC47E229C77C /* UnavailableHistoryRepository.swift */; };
 		A9DD5901B82DE085EDC1476A /* DecimalInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFB0DA7F9EDC2338FA87840 /* DecimalInputView.swift */; };
 		AB7E0B006D4C697D642CFD46 /* MainParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F13D3E784FB9BBE8D27494 /* MainParameter.swift */; };
 		AC786DA6585357E056DA0354 /* KeyIndicatorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4399A957DE7C618759116C4A /* KeyIndicatorResult.swift */; };
 		AD515E0DF3607AF2C482E0D4 /* InvestmentDurationUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598F272EECEE6BAE3380BB9 /* InvestmentDurationUnit.swift */; };
+		B1276F193C4CFCC4B75EEFA0 /* HistoryViewModelAnalyticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3672A82952058B4C8915D02 /* HistoryViewModelAnalyticsTests.swift */; };
 		BAF7B755DDE19A58C7CF8615 /* ContributionFrequencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FB1BFED58431391997A8C2 /* ContributionFrequencyView.swift */; };
 		BB3B890EA8CE152193177144 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9D2C8D8DD169804918A4F9 /* HintView.swift */; };
 		C09D87E14E138266BF3D4D7E /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF365D1792E52CC3D6A8F99 /* ChartView.swift */; };
 		CBB02AD6C179335DBA8CC33E /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 618423955671F1A9681FEF9A /* Calendar.swift */; };
 		CD3F817D7F33A8C7E51ACF72 /* HistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9966AA11349CD4DBD5F2DBCA /* HistoryEntry.swift */; };
+		D245A61BDF58E2E86DA2906C /* AnalyticsEventTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD8D81501605DFF199255258 /* AnalyticsEventTests.swift */; };
 		D34503D9264B96C34BD00397 /* HistoryViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436983964D501536A5378C4E /* HistoryViewModelTests.swift */; };
 		D5A7746D701DFF88C557F2C2 /* InMemoryHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E11D8D58A9AE4EC63E88A6 /* InMemoryHistoryRepository.swift */; };
 		D61F7012B494BA6D61A374FE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 487657362B63BDD8AC6AA5EA /* Localizable.strings */; };
@@ -66,6 +75,7 @@
 		EF38ADA51DF19E2BAFDF3CC8 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C2232E15EF45E7D534E522 /* RootView.swift */; };
 		EF98ECCA04F30F8656E9C085 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9A195CABE14B381B328F268 /* Colors.xcassets */; };
 		F0FD25065B47C5A3D1929886 /* ContributionFrequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596A127C8CC1653360AAEB2F /* ContributionFrequency.swift */; };
+		F41A5EAC76E297E1D962718E /* AnalyticsClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C58022721614C405227C3D51 /* AnalyticsClientSpy.swift */; };
 		FB52F5817D1C792E87147310 /* HistorySchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7656C29F78E68841DE251C96 /* HistorySchemaV1.swift */; };
 		FF71BA5C4FF80FB32B7EC0DF /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310AAA72173205B2E505EFF2 /* HistoryRepository.swift */; };
 /* End PBXBuildFile section */
@@ -89,12 +99,15 @@
 		1887E6DF0DF66FE1C9BC5E36 /* Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localizations.swift; sourceTree = "<group>"; };
 		1970128613F5407FB6FB0C61 /* HistoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryStore.swift; sourceTree = "<group>"; };
 		1AFB0DA7F9EDC2338FA87840 /* DecimalInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalInputView.swift; sourceTree = "<group>"; };
+		1D6A69E5460FF48D5F03512D /* FirebaseAnalyticsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAnalyticsClient.swift; sourceTree = "<group>"; };
 		20406413FAEFF8055FC4BEF9 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		20C8AB7451731B2748A0C084 /* NoopAnalyticsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoopAnalyticsClient.swift; sourceTree = "<group>"; };
 		20F13D3E784FB9BBE8D27494 /* MainParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainParameter.swift; sourceTree = "<group>"; };
 		24EB0C58786FE533117B969E /* PeriodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodView.swift; sourceTree = "<group>"; };
 		28B29FAAB2C6C2D09BF83341 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		2A409C86F25C908A064DB1E7 /* YieldChartSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YieldChartSectionView.swift; sourceTree = "<group>"; };
 		310AAA72173205B2E505EFF2 /* HistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
+		313F8BFC28CD5B66A03083CF /* MainViewModelAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelAnalyticsTests.swift; sourceTree = "<group>"; };
 		33114843835EE439423DBEA7 /* MainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainApp.swift; sourceTree = "<group>"; };
 		35E54EF1B4D727C41F64F6C6 /* MonthlyCapitalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyCapitalChartView.swift; sourceTree = "<group>"; };
 		3AF7F20ECEF24CE8B46C84C9 /* KeyMetricRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyMetricRowView.swift; sourceTree = "<group>"; };
@@ -108,11 +121,14 @@
 		596A127C8CC1653360AAEB2F /* ContributionFrequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionFrequency.swift; sourceTree = "<group>"; };
 		59D83EE5DD2ACD2598881D65 /* SwiftDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataStore.swift; sourceTree = "<group>"; };
 		59FB24BEEE798D69E42B5576 /* Decimal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decimal.swift; sourceTree = "<group>"; };
+		5F3F345D7134434972873488 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		618423955671F1A9681FEF9A /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		62138BC680D74B7973D3D941 /* MainParameterInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainParameterInputView.swift; sourceTree = "<group>"; };
 		672C58D079BC6FE966588893 /* HistoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowView.swift; sourceTree = "<group>"; };
 		68FB1BFED58431391997A8C2 /* ContributionFrequencyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContributionFrequencyView.swift; sourceTree = "<group>"; };
 		697A2BE254481AA7FD379275 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6EFC7800BD5A1A597A3D0B48 /* AnalyticsClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsClient.swift; sourceTree = "<group>"; };
+		6F25054B9EB4A634E4403B43 /* AnalyticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEvent.swift; sourceTree = "<group>"; };
 		7656C29F78E68841DE251C96 /* HistorySchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySchemaV1.swift; sourceTree = "<group>"; };
 		78175A6BFA257AE3A64BE3AF /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		78EEE570362ED658C2C63E18 /* CalculationInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationInput.swift; sourceTree = "<group>"; };
@@ -129,8 +145,11 @@
 		BE215E918F0C063E4A8F1BE4 /* HistoryRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepositoryTests.swift; sourceTree = "<group>"; };
 		BE9D2C8D8DD169804918A4F9 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		BFABD479B85056AA6CBF97AE /* MainViewModelHistoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelHistoryTests.swift; sourceTree = "<group>"; };
+		C3672A82952058B4C8915D02 /* HistoryViewModelAnalyticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModelAnalyticsTests.swift; sourceTree = "<group>"; };
+		C58022721614C405227C3D51 /* AnalyticsClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsClientSpy.swift; sourceTree = "<group>"; };
 		C7406DD2B70ED28EF31AC11B /* MainParametersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainParametersView.swift; sourceTree = "<group>"; };
 		CCE083F905AF1AF16FDC019A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		CD8D81501605DFF199255258 /* AnalyticsEventTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventTests.swift; sourceTree = "<group>"; };
 		CF086DBAF4E729180A8D5996 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CF831837A5470DE6B58DE5F1 /* KeyIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyIndicator.swift; sourceTree = "<group>"; };
 		D204ED217106326FC4D3A927 /* HistoryRowViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRowViewData.swift; sourceTree = "<group>"; };
@@ -146,6 +165,17 @@
 		F8C2232E15EF45E7D534E522 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		FDB54146483781F33C049B53 /* Margin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Margin.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		109A97CB12563C9F06EFCEE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				49F9D58F06D4A4E87BAFCD7C /* FirebaseAnalyticsCore in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		12D4AA3E6FD0B7DCF6047C83 /* Compound Interest */ = {
@@ -188,12 +218,30 @@
 			path = Generated;
 			sourceTree = "<group>";
 		};
+		3C061E4439D3252FAF2F3141 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				78BAD9B650712B9214ECBA85 /* Analytics */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		40F94089743BAD4E110E8C4F /* History */ = {
 			isa = PBXGroup;
 			children = (
+				C3672A82952058B4C8915D02 /* HistoryViewModelAnalyticsTests.swift */,
 				436983964D501536A5378C4E /* HistoryViewModelTests.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		41D598B34A7CF1EA45EAE89D /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				6EFC7800BD5A1A597A3D0B48 /* AnalyticsClient.swift */,
+				6F25054B9EB4A634E4403B43 /* AnalyticsEvent.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		4A70C612ACEA94B0BF93DA9A /* History */ = {
@@ -237,6 +285,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		66ECFEE58D685EB37C67473F /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				1D6A69E5460FF48D5F03512D /* FirebaseAnalyticsClient.swift */,
+				20C8AB7451731B2748A0C084 /* NoopAnalyticsClient.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		675E33EE117ACC8C6CE8E622 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +334,14 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		78BAD9B650712B9214ECBA85 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				CD8D81501605DFF199255258 /* AnalyticsEventTests.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 		7ACB7C207EE975BB6F7D3FE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +349,14 @@
 				F40CEB331625C352F2F12D44 /* HistoryValueRowView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		88994B8332EC9BE1D571B33C /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				C58022721614C405227C3D51 /* AnalyticsClientSpy.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		8A4D9CB3960C38756DDF8D0B /* Flows */ = {
@@ -295,6 +368,14 @@
 				675E33EE117ACC8C6CE8E622 /* Main */,
 			);
 			path = Flows;
+			sourceTree = "<group>";
+		};
+		8CD90DC070F2E1C7AB01478F /* Plist */ = {
+			isa = PBXGroup;
+			children = (
+				5F3F345D7134434972873488 /* GoogleService-Info.plist */,
+			);
+			path = Plist;
 			sourceTree = "<group>";
 		};
 		A271A6DFE64A8A9663D0BD40 /* Models */ = {
@@ -338,6 +419,7 @@
 		C12B6E3B32B133A7B6F5B295 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				313F8BFC28CD5B66A03083CF /* MainViewModelAnalyticsTests.swift */,
 				BFABD479B85056AA6CBF97AE /* MainViewModelHistoryTests.swift */,
 			);
 			path = Main;
@@ -387,6 +469,7 @@
 				DC129F2959A4AEAD47B93748 /* Assets */,
 				35622F84FFB042A7D022A2B4 /* Generated */,
 				6D6ED197A7C8BC0E40F366D0 /* Localization */,
+				8CD90DC070F2E1C7AB01478F /* Plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -394,6 +477,7 @@
 		DF18773E1B1DC530B8927ED7 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				3C061E4439D3252FAF2F3141 /* Core */,
 				EE99775FDA71B932ED8228D9 /* Flows */,
 				E55F5E8C61293F85CDC85827 /* Infrastructure */,
 			);
@@ -433,6 +517,7 @@
 		E55F5E8C61293F85CDC85827 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				88994B8332EC9BE1D571B33C /* Analytics */,
 				BE215E918F0C063E4A8F1BE4 /* HistoryRepositoryTests.swift */,
 				9CD9BD0E8A5CD7FA0EB4DC08 /* HistoryStoreTests.swift */,
 			);
@@ -451,6 +536,7 @@
 		F790B654FF59ECB9119AEFE2 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				66ECFEE58D685EB37C67473F /* Analytics */,
 				4A70C612ACEA94B0BF93DA9A /* History */,
 			);
 			path = Infrastructure;
@@ -459,6 +545,7 @@
 		FD5EF4644331ED021CDCF813 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				41D598B34A7CF1EA45EAE89D /* Analytics */,
 				F15C5BFA2DD97F3588733085 /* ApplicationSupportDirectory.swift */,
 				59D83EE5DD2ACD2598881D65 /* SwiftDataStore.swift */,
 			);
@@ -494,6 +581,7 @@
 				31CDB3772B325B10A45697DE /* Sources */,
 				E3A9CAC971AD9E9360B2DEB7 /* Run Swiftlint */,
 				39A7FAF1B8B93A9E66AB92BD /* Resources */,
+				109A97CB12563C9F06EFCEE4 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -501,6 +589,7 @@
 			);
 			name = CompoundInterest;
 			packageProductDependencies = (
+				30EC1B3CC17466DEFA1C886B /* FirebaseAnalyticsCore */,
 			);
 			productName = CompoundInterest;
 			productReference = ED67AFD2F3849EB9B42FAC31 /* CompoundInterest.app */;
@@ -531,6 +620,9 @@
 			);
 			mainGroup = E1921ED7E340B890B6F903D6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FDDB32733C950F444153CA29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 64570C8FC1F870B156B70987 /* Products */;
 			projectDirPath = "";
@@ -548,6 +640,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF98ECCA04F30F8656E9C085 /* Colors.xcassets in Resources */,
+				52604290A9F1AC2BAC4CB32C /* GoogleService-Info.plist in Resources */,
 				79FF82668D17B5D3933B8941 /* Images.xcassets in Resources */,
 				D61F7012B494BA6D61A374FE /* Localizable.strings in Resources */,
 				3220E65D8B3F90F9AB71E7B9 /* Preview Assets.xcassets in Resources */,
@@ -602,6 +695,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				868BBAF9879D8E22DF85695C /* AnalyticsClient.swift in Sources */,
+				42CE260332A1BA2763F9A0DB /* AnalyticsEvent.swift in Sources */,
 				DEB32F0379C5EEF1BC03EB86 /* AppFont.swift in Sources */,
 				8F740EED113D852A23726179 /* ApplicationSupportDirectory.swift in Sources */,
 				492CFBECFD7E53E118A97E74 /* CalculationInput.swift in Sources */,
@@ -612,6 +707,7 @@
 				8E6981FEE4F72209123BDA07 /* Decimal.swift in Sources */,
 				A9DD5901B82DE085EDC1476A /* DecimalInputView.swift in Sources */,
 				9C13422F33F02418C9C508AD /* DecimalTextFormatter.swift in Sources */,
+				86A5549741EE5E98D1071792 /* FirebaseAnalyticsClient.swift in Sources */,
 				27E208DA60E9DA9E9FF3F54F /* GradientButton.swift in Sources */,
 				BB3B890EA8CE152193177144 /* HintView.swift in Sources */,
 				3D381044375735259ECEC29F /* HistoryDay.swift in Sources */,
@@ -646,6 +742,7 @@
 				828C787997F32A0C3E321D95 /* MonthlyCapitalChartView.swift in Sources */,
 				5919CBBB7E59C29570FAD371 /* MonthlyCapitalListView.swift in Sources */,
 				21283507C0781EADFC97652E /* MonthlyCapitalPDFDocument.swift in Sources */,
+				33065FE15E2908BFE2F35184 /* NoopAnalyticsClient.swift in Sources */,
 				DFB098ABE5035D32442C2C54 /* NumberFormatter.swift in Sources */,
 				6B6C212065E0FE99B7E6A62F /* PeriodView.swift in Sources */,
 				EF38ADA51DF19E2BAFDF3CC8 /* RootView.swift in Sources */,
@@ -662,9 +759,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F41A5EAC76E297E1D962718E /* AnalyticsClientSpy.swift in Sources */,
+				D245A61BDF58E2E86DA2906C /* AnalyticsEventTests.swift in Sources */,
 				14F731D08E4A3AEC0D23F6DB /* HistoryRepositoryTests.swift in Sources */,
 				2F920FF8A233929D7F01CD30 /* HistoryStoreTests.swift in Sources */,
+				B1276F193C4CFCC4B75EEFA0 /* HistoryViewModelAnalyticsTests.swift in Sources */,
 				D34503D9264B96C34BD00397 /* HistoryViewModelTests.swift in Sources */,
+				A2C7CD180D692123D5BF8ABD /* MainViewModelAnalyticsTests.swift in Sources */,
 				07B23DCC731385F17FCFF2D0 /* MainViewModelHistoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,7 +936,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Compound Interest/Resources/Assets/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = Q9WXSNT6UT;
@@ -847,7 +948,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Compound Interest/Resources/Plist/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сложный процент";
-				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_CFBundleVersion = 4;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -884,7 +985,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"Compound Interest/Resources/Assets/Preview Assets.xcassets\"";
 				DEVELOPMENT_TEAM = Q9WXSNT6UT;
@@ -896,7 +997,7 @@
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "Compound Interest/Resources/Plist/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Сложный процент";
-				INFOPLIST_KEY_CFBundleVersion = 1;
+				INFOPLIST_KEY_CFBundleVersion = 4;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -973,6 +1074,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FDDB32733C950F444153CA29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = exactVersion;
+				version = 12.17.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		30EC1B3CC17466DEFA1C886B /* FirebaseAnalyticsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDDB32733C950F444153CA29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D534FED98A86DCFF5B50BF1D /* Project object */;
 }

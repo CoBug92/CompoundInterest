@@ -5,6 +5,7 @@ struct MonthlyCapitalListView: View {
     // MARK: - Properties
 
     let monthlyCapital: [KeyIndicatorResult.MonthlyCapital]
+    let onExportStarted: () -> Void
 
     // MARK: - Layout
 
@@ -39,6 +40,9 @@ struct MonthlyCapitalListView: View {
                     .foregroundStyle(Color(.Text.primary))
                     .padding(.all, Margin.x2)
             }
+            .simultaneousGesture(
+                TapGesture().onEnded(onExportStarted)
+            )
             .accessibilityLabel(Localizations.Export.MonthlyIncome.buttonTitle)
         }
     }
@@ -51,7 +55,8 @@ struct MonthlyCapitalListView: View {
         monthlyCapital: [
             KeyIndicatorResult.MonthlyCapital(month: 1, capital: 101_000),
             KeyIndicatorResult.MonthlyCapital(month: 2, capital: 102_010)
-        ]
+        ],
+        onExportStarted: {}
     )
     .padding()
 }

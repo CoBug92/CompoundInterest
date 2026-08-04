@@ -9,9 +9,15 @@ struct RootView: View {
 
     // MARK: - Init/Deinit
 
-    init(historyRepository: any HistoryRepository) {
+    init(
+        historyRepository: any HistoryRepository,
+        analyticsClient: any AnalyticsClient
+    ) {
         _viewModel = StateObject(
-            wrappedValue: MainViewModel(historyRepository: historyRepository)
+            wrappedValue: MainViewModel(
+                historyRepository: historyRepository,
+                analyticsClient: analyticsClient
+            )
         )
     }
 
@@ -28,5 +34,8 @@ struct RootView: View {
 // MARK: - Preview
 
 #Preview {
-    RootView(historyRepository: InMemoryHistoryRepository())
+    RootView(
+        historyRepository: InMemoryHistoryRepository(),
+        analyticsClient: NoopAnalyticsClient()
+    )
 }

@@ -8,7 +8,10 @@ final class MainViewModelHistoryTests: XCTestCase {
 
     func testSuccessfulCalculationSavesHistory() throws {
         let repository = InMemoryHistoryRepository()
-        let viewModel = MainViewModel(historyRepository: repository)
+        let viewModel = MainViewModel(
+            historyRepository: repository,
+            analyticsClient: AnalyticsClientSpy()
+        )
         configureValidInput(viewModel)
 
         viewModel.calculateResult()
@@ -19,7 +22,10 @@ final class MainViewModelHistoryTests: XCTestCase {
 
     func testInvalidCalculationDoesNotSaveHistory() throws {
         let repository = InMemoryHistoryRepository()
-        let viewModel = MainViewModel(historyRepository: repository)
+        let viewModel = MainViewModel(
+            historyRepository: repository,
+            analyticsClient: AnalyticsClientSpy()
+        )
 
         viewModel.calculateResult()
 
@@ -28,7 +34,10 @@ final class MainViewModelHistoryTests: XCTestCase {
     }
 
     func testAvailableRepositoryMakesHistoryAvailable() {
-        let viewModel = MainViewModel(historyRepository: InMemoryHistoryRepository())
+        let viewModel = MainViewModel(
+            historyRepository: InMemoryHistoryRepository(),
+            analyticsClient: AnalyticsClientSpy()
+        )
 
         XCTAssertTrue(viewModel.isHistoryAvailable)
     }
@@ -37,7 +46,10 @@ final class MainViewModelHistoryTests: XCTestCase {
         let repository = UnavailableHistoryRepository(
             underlyingError: NSError(domain: "History", code: .zero)
         )
-        let viewModel = MainViewModel(historyRepository: repository)
+        let viewModel = MainViewModel(
+            historyRepository: repository,
+            analyticsClient: AnalyticsClientSpy()
+        )
 
         XCTAssertFalse(viewModel.isHistoryAvailable)
         XCTAssertEqual(viewModel.historyErrorMessage, Localizations.History.Error.message)

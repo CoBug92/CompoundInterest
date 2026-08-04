@@ -6,6 +6,7 @@ struct MainResultView: View {
 
     let result: KeyIndicatorResult
     let keyIndicators: [KeyIndicator]
+    let onExportStarted: () -> Void
 
     // MARK: - Layout
 
@@ -15,7 +16,10 @@ struct MainResultView: View {
 
         YieldChartSectionView(monthlyCapital: result.monthlyCapital)
 
-        MonthlyCapitalListView(monthlyCapital: result.monthlyCapital)
+        MonthlyCapitalListView(
+            monthlyCapital: result.monthlyCapital,
+            onExportStarted: onExportStarted
+        )
             .transaction { transaction in
                 transaction.animation = nil
             }
@@ -46,7 +50,8 @@ private extension CGFloat {
             growthRate: 33,
             monthlyCapital: []
         ),
-        keyIndicators: []
+        keyIndicators: [],
+        onExportStarted: {}
     )
     .padding()
 }

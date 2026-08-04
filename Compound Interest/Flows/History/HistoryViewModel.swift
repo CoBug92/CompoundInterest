@@ -11,6 +11,7 @@ final class HistoryViewModel: ObservableObject {
     // MARK: - Properties
 
     private let historyRepository: any HistoryRepository
+    private let analyticsClient: any AnalyticsClient
     private let onSelect: (HistoryEntry) -> Void
     private let formatter = DecimalTextFormatter()
     private var entriesByID: [UUID: HistoryEntry] = [:]
@@ -19,9 +20,11 @@ final class HistoryViewModel: ObservableObject {
 
     init(
         historyRepository: any HistoryRepository,
+        analyticsClient: any AnalyticsClient,
         onSelect: @escaping (HistoryEntry) -> Void
     ) {
         self.historyRepository = historyRepository
+        self.analyticsClient = analyticsClient
         self.onSelect = onSelect
         reload()
     }
@@ -34,6 +37,7 @@ final class HistoryViewModel: ObservableObject {
         }
 
         onSelect(entry)
+        analyticsClient.track(.historyEntryReused)
     }
 
     func delete(id: UUID) {

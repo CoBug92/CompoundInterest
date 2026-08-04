@@ -7,9 +7,6 @@ targetTemplates:
         excludes: [Resources/Plist/Info.plist]
 
     scheme:
-      commandLineArguments:
-        '-FIRDebugDisabled': true
-        '-FIRDebugEnabled': false
       testTargets:
         - UnitTests
     settings:
@@ -27,6 +24,9 @@ targetTemplates:
           DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
           PROVISIONING_PROFILE_SPECIFIER: match AppStore ${BUNDLE_ID}
           CODE_SIGN_IDENTITY: "Apple Distribution"
+    dependencies:
+      - package: Firebase
+        product: FirebaseAnalyticsCore
     
     preBuildScripts:
       - script: ./Scripts/swiftgen/swiftgen.sh
@@ -45,38 +45,13 @@ targetTemplates:
         CFBundleVersion: '4'
         UILaunchStoryboardName: LaunchScreen.storyboard
         ITSAppUsesNonExemptEncryption: NO
-        LSApplicationQueriesSchemes:
-          - fbapi
-          - fb-messenger-share-api
         CFBundleDisplayName: $(BUNDLE_DISPLAY_NAME)
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
 
-        NSAppTransportSecurity:
-          NSExceptionDomains:
-            facebook.com:
-              NSIncludesSubdomains: YES
-              NSExceptionRequiresForwardSecrecy: NO
-            fbcdn.net:
-              NSIncludesSubdomains: YES
-              NSExceptionRequiresForwardSecrecy: NO
-            akamaihd.net:
-              NSIncludesSubdomains: YES
-              NSExceptionRequiresForwardSecrecy: NO
-            ip-api.com:
-              NSIncludesSubdomains: YES
-              NSExceptionRequiresForwardSecrecy: NO
-              NSExceptionAllowsInsecureHTTPLoads: YES
-
-        FacebookAdvertiserIDCollectionEnabled: YES
-        FacebookAppID: ${FACEBOOK_APP_ID}
-        FacebookDisplayName: $(BUNDLE_DISPLAY_NAME)
-        FacebookAutoLogAppEventsEnabled: YES
-        FacebookClientToken: ${FACEBOOK_CLIENT_TOKEN}
-        CFBundleURLTypes:
-          - CFBundleTypeRole: Editor
-            CFBundleURLSchemes:
-              - ${FACEBOOK_URL_SCHEME}
+        FirebaseAutomaticScreenReportingEnabled: NO
+        GOOGLE_ANALYTICS_DEFAULT_ALLOW_AD_PERSONALIZATION_SIGNALS: NO
+        GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED: NO
 
 settingGroups:
   CommonSettings:

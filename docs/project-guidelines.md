@@ -95,7 +95,7 @@ Color("Button/secondary")
 // MARK: - Preview
 ```
 
-Protocol conformances выносим в отдельные extensions и маркируем именем протокола:
+Реализацию каждого протокола всегда выносим в отдельный extension и маркируем именем протокола. Объявление conformance и реализация всех требований протокола должны находиться в этом extension, а не в основном теле типа:
 
 ```swift
 // MARK: - Identifiable
@@ -137,6 +137,10 @@ extension Model: Identifiable {}
 - не дробим маленький `View` на 5 разделов ради формальности;
 - не прячем один `body` под `Layout`, если файл очевиден без этого;
 - не смешиваем protocol conformance с внутренними секциями основного типа.
+
+## Initialization
+
+Не добавляем отдельные initializer или default-значения параметров только ради preview или тестов. Preview и тесты используют production initializer и явно передают необходимые объекты, mock-реализации или test doubles.
 
 ## SwiftUI Preview
 

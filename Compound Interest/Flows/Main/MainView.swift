@@ -53,7 +53,8 @@ struct MainView: View {
             if let result = viewModel.result {
                 MainResultView(
                     result: result,
-                    keyIndicators: viewModel.keyIndicators
+                    keyIndicators: viewModel.keyIndicators,
+                    onExportStarted: viewModel.startResultExport
                 )
             }
         }
@@ -74,6 +75,9 @@ struct MainView: View {
             Image(systemName: SFSymbols.clockArrowCirclepath)
                 .foregroundStyle(Color(.Button.secondary))
         }
+        .simultaneousGesture(
+            TapGesture().onEnded(viewModel.openHistory)
+        )
         .accessibilityLabel(Localizations.History.Open.buttonTitle)
     }
 
@@ -111,5 +115,10 @@ private extension Double {
 // MARK: - Preview
 
 #Preview {
-    MainView(viewModel: MainViewModel())
+    MainView(
+        viewModel: MainViewModel(
+            historyRepository: InMemoryHistoryRepository(),
+            analyticsClient: NoopAnalyticsClient()
+        )
+    )
 }
